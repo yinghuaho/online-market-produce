@@ -1,10 +1,93 @@
 @charset "utf-8";
+
+/* =-=-=-=-=-=-=-=-=-=-= COLOR PALETTE -=-=-=-=-=-=-=-=-=-=-= */
+/* https://coolors.co/app/ffc224-9dc906-366818-ff5804-cd2800 */
+
 /* CSS Document */
+body{
+	margin:0;
+	padding:0;	
+	
+}
 
 .loginScreen{
 	background-image:url(../imgs/Fresh-Vegetables.jpg);
 	background-repeat:no-repeat;
-	
-	
-	
+	background-size:cover;
+	height:100vh;
+	width:100vw;
+	padding:0px;
+	display:block;	
+}
+
+.pageinfo{
+	color:white;
+	text-align:center;
+}
+
+.pageinfo img{
+	width:35%;
+	min-width:150px;
+	margin:0 auto;	
+}
+
+.name{
+	font-size:calc(0.75em + 6vmin);	
+	font-family: 'Tangerine', serif;
+	font-weight:bold;
+	text-shadow: 4px 4px 4px black;	
+}
+
+input{
+	margin-top:5px;	
+}
+
+button{
+	margin-top:5px;	
+}
+
+.enjoy-css {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  text-align: center;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 10px 20px;
+  border: 1px solid #b7b7b7;
+  -webkit-border-radius: 21px;
+  border-radius: 21px;
+  color: rgba(0,142,198,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(252,252,252,1);
+  -webkit-box-shadow: 5px 5px 8px 2px rgba(0,0,0,0.4) ;
+  box-shadow: 5px 5px 8px 2px rgba(0,0,0,0.4) ;
+  -webkit-transition: all 1000ms cubic-bezier(0.42, 0, 0.58, 1), all 1000ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  -moz-transition: all 1000ms cubic-bezier(0.42, 0, 0.58, 1), all 1000ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  -o-transition: all 1000ms cubic-bezier(0.42, 0, 0.58, 1), all 1000ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+  transition: all 1000ms cubic-bezier(0.42, 0, 0.58, 1), all 1000ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+}
+
+.buttonestyle {
+	background-color:#6fba26;
+	width:100px;
+	padding:5px;
+	position:relative;
+	font-family: 'Open Sans', sans-serif;
+	font-size:12px;
+	text-decoration:none;
+	color:#fff;
+	background-image: linear-gradient(bottom, rgb(100,170,30) 0%, rgb(129,212,51) 100%);
+	box-shadow: inset 0px 1px 0px #b2f17f, 0px 6px 0px #3d6f0d;
+	border-radius: 5px;
+	cursor:pointer;
+}
+
+.buttonestyle:active {
+	top:7px;
+	background-image: linear-gradient(bottom, rgb(100,170,30) 100%, rgb(129,212,51) 0%);
+	box-shadow: inset 0px 1px 0px #b2f17f, inset 0px -1px 0px #3d6f0d;
+	color: #156785;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+	background: rgb(44,160,202);
 }
