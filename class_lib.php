@@ -14,9 +14,9 @@ include("connection.php");
 		 }
 	 }
 	 
-	 public function selectStuff($tablename, $username, $password)
+	 public function selectStuff($db,$tablename, $username, $password)
 	 {
-		 global $db;
+
 		 $statement = $db->prepare("SELECT f_name, l_name, secruitycode FROM ".$tablename." WHERE username = :username AND password = :password ");
 		 $statement->execute(array(':username' => $username, ':password' => $password));
 		 $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -31,5 +31,5 @@ include("connection.php");
  }
  
  $conn = new database;
- $conn -> selectStuff("userinfo","admin","123");
+ $conn -> selectStuff($db,"userinfo","admin","123");
 ?>
