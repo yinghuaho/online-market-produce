@@ -1,10 +1,35 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>無標題文件</title>
-</head>
+<?php
+include("connection.php");
 
-<body>
-</body>
-</html>
+ class database
+ {	 
+	 public function insertStuff($tablename, $column, $value)
+	 {
+		 global $db;
+		 $query ="INSERT INTO ".$tablename."(".$column.") VALUES ('".$value."')";
+		 $result = $db->query($query);
+		 if($result)
+		 {
+			 echo "success";
+		 }
+	 }
+	 
+	 public function selectStuff($tablename, $username, $password)
+	 {
+		 global $db;
+		 $statement = $db->prepare("SELECT f_name, l_name, secruitycode FROM ".$tablename." WHERE username = :username AND password = :password ");
+		 $statement->execute(array(':username' => $username, ':password' => $password));
+		 $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+		 $count = $statement->rowCount();
+		 if($count>0)
+		 {
+			echo "success"; 
+		 }
+
+	 }
+	 
+ }
+ 
+ $conn = new database;
+ $conn -> selectStuff("userinfo","admin","123");
+?>
