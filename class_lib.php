@@ -1,7 +1,5 @@
-ooi<?php
-include("connection.php");
-
- class database
+<?php
+ class databasez
  {	 
 	 public function insertStuff($tablename, $column, $value)
 	 {
@@ -55,3 +53,4 @@ include("connection.php");
  echo $test->lazy_select();
  //
 ?>
+
