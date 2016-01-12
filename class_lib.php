@@ -32,13 +32,15 @@ include('connection.php');
 	 public $tablename = "tablename";
 	 public $columns = "columns";
 	 public $where = "where";
+	 public $orderBy = "orderBY";
 	 
-	 public function set_lazy_select($db,$tablename,$columns,$where)
+	 public function set_lazy_select($db,$tablename,$columns,$where,$orderBy) //set varaibles for lazy_select()
 	 {
 		 $this->db = $db;
 		 $this->tablename = $tablename;
 		 $this->columns = $columns;
 		 $this->where = $where;
+		 $this->orderBy = $orderBy;
 	 }
 	 
 	 public function lazy_select() //Super Lazy For all database select 
@@ -47,6 +49,7 @@ include('connection.php');
 		 $tablename = $this->tablename;
 		 $columns = $this->columns;
 		 $where = $this->where;
+		 $orderBy = $this->orderBy;
 		 $querey ="SELECT ";
 		 $arrlength = count($columns);
 		 if($arrlength == 0 )
@@ -60,7 +63,7 @@ include('connection.php');
 			 {
 				 $selecCount ++;
 				 $querey = $querey . $columns[$x] . " ";
-				 if($selecCount >=1 && $selecCount < $arrlength)
+				 if($selecCount >1 && $selecCount < $arrlength)
 				 {
 					 $querey = $querey . ", ";
 				 }
@@ -75,12 +78,31 @@ include('connection.php');
 		 echo $querey;
 		 echo "<br>";
 		 $arrlengthWhere = count($where);
+		 $arrlengthOrderBy = count($orderBy);
 		 echo $arrlengthWhere;
 		 echo "<br>";
 		 if($arrlengthWhere == 0 )
 		 {
+		 if($arrlengthOrderBy != 0)
+			 {
+				$querey = $querey . " ORDER BY  ";
+				 
+				$oderByCount = 0;
+				for($c = 0; $c <$arrlengthOrderBy; $c++)
+				{
+					 $oderByCount ++;
+					 $querey = $querey . $orderBy[$c] . " ";
+					 if($oderByCount >1 && $selecCount < $arrlengthOrderBy)
+					 {
+						 $querey = $querey . ", ";
+					 }
+				} 
+			 }
+			 echo $querey;
 			 $statement = $db->prepare($querey);
 			 $statement->execute();
+			 $arr = $statement->errorInfo();
+			 print_r($arr);
 			 
 		 }else
 		 {
@@ -89,7 +111,7 @@ include('connection.php');
 			 foreach($where as $i => $i_value) {
 				$whereCount++;
 				$querey = $querey . " " . $i . " = " . ":" . $i. " ";
-				if($whereCount >= 1 && $whereCount < $arrlengthWhere)
+				if($whereCount > 1 && $whereCount < $arrlengthWhere)
 				{
 					$querey = $querey . " AND ";
 				}	
@@ -103,7 +125,7 @@ include('connection.php');
 			 foreach($where as $z => $z_value) {
 				$excuseQuerey = $excuseQuerey .  "':" . $z . "' => '" . $z_value ."'";
 				$whereCountSecondEach ++;
-				if($whereCountSecondEach >= 1 && $whereCountSecondEach < $arrlengthWhere)
+				if($whereCountSecondEach > 1 && $whereCountSecondEach < $arrlengthWhere)
 				{
 					$excuseQuerey = $excuseQuerey . " , ";
 				}
@@ -115,11 +137,34 @@ include('connection.php');
 			 echo "<br>";
 			 echo $excuseQuerey;
 			 echo "<br>";
+			 
+			 if($arrlengthOrderBy != 0)
+			 {
+				$querey = $querey . " ORDER BY  ";
+				 
+				$oderByCount = 0;
+				for($c = 0; $c <$arrlengthOrderBy; $c++)
+				{
+					 $oderByCount ++;
+					 $querey = $querey . $orderBy[$c] . " ";
+					 if($oderByCount >1 && $selecCount < $arrlengthOrderBy)
+					 {
+						 $querey = $querey . ", ";
+					 }
+				} 
+			 }
+
+			 echo $querey;
+			 
 			 $statement = $db->prepare($querey);
 			 $statement->execute($executeArray);
+			 $arr = $statement->errorInfo();
+			 print_r($arr);
+			 
+			 
 		 }
 		 
-		
+			
 		 $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 		 $count = $statement->rowCount();
 		 
@@ -148,11 +193,13 @@ include('connection.php');
  $columns = array();
 /* $where = array("username"=> "admin","password" =>"123");*/
  $where = array();
- $test->set_lazy_select($db,"userinfo",$columns,$where);
+ $orderBy = array(); //("column_name DESC or ASC or leave it blank")
+ $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy);
  $test->lazy_select();
  
 /* 
-  Class Rule
+  lazy_select() Class Rule
+  
   - $db is from
   
 	try{
@@ -163,7 +210,16 @@ include('connection.php');
 	
   - set_lazy_select ($db, $tablename, $columns, $where);
   - If you want to select all the columns from your database, create an empty array for $columns
-  - 
+  - If you don't want to have any "where statment", create an empty array for $where
+  - If you don't want to have any "Order by statement", create an empty array for $orderBy;
+  
+  For example
+  $test = new database;
+  $columns = array(f_name, l_name, secruitycode);
+  $where = array("username"=> "admin","password" =>"123");
+  $orderBy = array("id DESC"); 
+  $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy);
+  $test->lazy_select();
 */
 ?>
 
