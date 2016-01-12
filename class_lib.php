@@ -53,4 +53,5 @@ include("connection.php");
  $test = new database;
  $test->set_lazy_select($db,"table","columns","where");
  echo $test->lazy_select();
+ //
 ?>
