@@ -35,7 +35,7 @@ $("#login").click(function(){
 		console.log("Username and password not empty!");
 
 		$.ajax({
-			url: "",
+			url: "controller.php",
 			dataType:"json",
 			data:{
 			  username: $("#username").val(),
@@ -44,18 +44,8 @@ $("#login").click(function(){
 			},
 			type:"post",
 			success:function(result){
-			  console.log(result[0].login);
-			  if (result[0].login == true)
-			  {
-				sessionStorage.name = result[0].name;
-				sessionStorage.userid = result[0].userid;
-				sessionStorage.email = result[0].email;
-				document.location = 'categories.html';
-			  } else { //display error here, if user enters wrong pass and username
-				console.log(document.getElementById("username").value);
-				console.log(document.getElementById("password").value);
-				errUser.innerHTML =  "Invalid username or password";
-			  }
+			  console.log(result);
+			  console.log(result[0].f_name);
 			},//success:function(result)	
 			error: function(jqXHR,textStatus, errorThrown) {
 				console.log(jqXHR); 
@@ -64,7 +54,11 @@ $("#login").click(function(){
 			}
 		});//ajax		
 	
-	} // if ...
+	} else
+	{
+		
+		
+	} //else if one of username or password is empty
 
 });	// login on click
 

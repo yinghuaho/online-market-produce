@@ -2,9 +2,7 @@
 include('connection.php');
 
  class database
- {	 
-
-	 
+ {	 	 
 	 public $db;
 	 public $tablename = "tablename";
 	 public $columns = "columns";
@@ -31,7 +29,6 @@ include('connection.php');
 		 $arrlength = count($columns);
 		 if($arrlength == 0 )
 		 {
-			echo "no columns"; 
 			$querey ="SELECT * ";
 		 }else
 		 {
@@ -69,10 +66,10 @@ include('connection.php');
 			 $statement = $db->prepare($querey);
 			 $statement->execute();
 			 $arr = $statement->errorInfo();
-			 if($arr)
+/*			 if($arr)
 			 {
-			 print_r($arr);
-			 }
+		     print_r("database handling error".$arr);
+			 }*/
 			 
 		 }else
 		 {
@@ -107,10 +104,10 @@ include('connection.php');
 			 $statement = $db->prepare($querey);
 			 $statement->execute($executeArray);
 			 $arr = $statement->errorInfo();
-			 if($arr)
+/*			 if($arr)
 			 {
-			 print_r($arr);
-			 }		 
+			 print_r("database handling error".$arr);
+			 }	*/	 
 		 }	
 		 $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 		 $count = $statement->rowCount();
@@ -119,11 +116,13 @@ include('connection.php');
 
 		 if($count>0)
 		 {
-			foreach($rows as $row => $row_value)
-			{
-				$result_success["".$row.""] = $row_value;
-			}
+			foreach($rows as $row){
+				foreach($row as $key => $value)
+				{
+					$result_success[$key] = $value;				
+				}
 				array_push($result,$result_success);
+			}
 		 }else
 		 {
 			$result_failed = array("message" => "failed");
@@ -140,25 +139,18 @@ include('connection.php');
  
  
  
- $test = new database;
-// $columns = array(f_name, l_name, secruitycode);
+/* $test = new database;
+ //$columns = array(f_name, l_name, secruitycode);
  $columns = array();
  $where = array("username"=> "admin","password" =>"123");
  //$where = array();
  $orderBy = array(id); //("column_name DESC or ASC or leave it blank")
  $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy);
  $test->lazy_select();
- 
+*/ 
 /* 
   Class Rule
-  - $db is from
-  
-	try{
-		$db = new PDO("mysql:dbname=databasename;host=localhost", "username", "password");
-	} catch (PDOExceptioin $e){
-		echo 'Connection Failed: ' . $e->getMessage();	
-	}
-	
+  - $db is from connection.php as pdo function	
   - set_lazy_select ($db, $tablename, $columns, $where);
   - If you want to select all the columns from your database, create an empty array for $columns
   - If you don't want to have any "where statment", create an empty array for $where
@@ -166,7 +158,8 @@ include('connection.php');
   - $columns = array(f_name, l_name, secruitycode);  array(column1,column2,column3,...);
   - $where = array("username"=> "admin","password" =>"123"); array( column_name => value);
   - $orderBy = array(id);  array("column_name DESC or ASC or leave it blank")
-  - $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy);  //set_lazy_select($db,$tablename,$columns,$where,$orderBy)
+  - $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy);   
+   //set_lazy_select($db,$tablename,$columns,$where,$orderBy)
   - $test->lazy_select();  
 */
 ?>
