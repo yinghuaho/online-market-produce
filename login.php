@@ -14,6 +14,7 @@
 <div class="pageinfo">
 	<img class="loginLogo" src="imgs/FnH_Logo_SVGv2.svg"/>
 <!--     <div class="name">Fresh 'n Healthy: <br> Online Farmers' Market</div> -->
+	<div id="errorMessage">Username or Password is invalid</div>
     <input class="enjoy-css" type="text" id="username" placeholder="Username"/>
     <input class="enjoy-css" type="password" id="password" placeholder="Password"/>
     <br/>
@@ -25,6 +26,8 @@
 <script>
 $(document).ready(function(){
 
+$("#errorMessage").hide();
+
 $("#login").click(function(){
 	console.log("Login Button Clicked!");
 
@@ -33,7 +36,7 @@ $("#login").click(function(){
 		console.log("Username and password not empty!");
 
 		$.ajax({
-			url: "controller.php",
+			url: "controller/controller.php",
 			dataType:"json",
 			data:{
 			  username: $("#username").val(),
@@ -44,6 +47,15 @@ $("#login").click(function(){
 			success:function(result){
 			  console.log(result);
 			  console.log(result[0].f_name);
+
+			  if(result[0].message == "success")
+			  {
+				  alert("Confirmed");
+			  }else if(result[0].message == "failed")
+			  {
+				  $("#errorMessage").show();
+			  }
+
 			},//success:function(result)	
 			error: function(jqXHR,textStatus, errorThrown) {
 				console.log(jqXHR); 
