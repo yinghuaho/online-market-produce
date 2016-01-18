@@ -1,27 +1,25 @@
-<!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8"/>
 	<title>Fresh 'n Healthy: Online Farmers' Market</title>
-	<link rel = "stylesheet" type="text/css" href="css/login.css">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+	<link rel = "stylesheet" type="text/css" href="css/login.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 
 
-
 <body>
 
-<div class = "loginScreen">
-	<div class = "pageinfo">
-    	<img src="imgs/made-in-china1.png">
-        <div class = "name">Fresh 'n Healthy: <br> Online Farmers' Market</div>
-        <input class = "enjoy-css" type="text" id="username" placeholder="Username">
-        <input class ="enjoy-css" type="password" id="password" placeholder="Password">
-        </br>
-        <button id ="login" class = "buttonestyle" >Login</button>
-    </div>
+<div class="loginBG"></div>
+
+<div class="pageinfo">
+	<img class="loginLogo" src="imgs/FnH_Logo_SVGv2.svg"/>
+<!--     <div class="name">Fresh 'n Healthy: <br> Online Farmers' Market</div> -->
+    <input class="enjoy-css" type="text" id="username" placeholder="Username"/>
+    <input class="enjoy-css" type="password" id="password" placeholder="Password"/>
+    <br/>
+    <button id="login" class="buttonstyle">Login</button>
 </div>
+
 
 
 <script>
