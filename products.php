@@ -86,7 +86,7 @@
 <div id="productscontainer" class="container">
 	<div id="products_display" class="row text-center">
 	</div> <!-- ROW -->
-<button>2</button>
+<button id="prev">Prev</button><div id="pages"></div><button id="next">Next</button>
 </div> 	<!-- CONTAINER -->
 
 

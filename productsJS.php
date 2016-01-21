@@ -8,7 +8,7 @@ include('connection.php');
 		
 		
 		//When page load, user ajax to retrieve on sale items from database
-		var loadingProducts = function(){
+		var loadingProducts = function(pagenumber){
 				$.ajax({
 					url: "controller.php",
 					dataType:"json",
@@ -90,5 +90,28 @@ include('connection.php');
 				?>;
 				
 		console.log(onsaleItemAmount);
+		var pages = onsaleItemAmount / 20;
+		console.log(pages);
+		
+		if(pages>0)
+		{
+			var pagesnumber = pages.toFixed(0);
+			$("#next,#prev").show();
+
+			$("#pages").append("<button id='"+pagesnumber+"pages'>1</button>");
+			for(var i=1; i<pages; i++)
+			{
+				var pageNum = i + 1;
+				$("#pages").append("<button id='"+i+"pages'>"+pageNum+"</button>");
+			}
+		}else
+		{
+			$("#next,$prev").hide();
+			loadingProducts();	
+		}
+		
+		
+		
+		
 	});
 </script>
