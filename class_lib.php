@@ -3,11 +3,14 @@ include('connection.php');
 
  class database
  {	 	 
-	 public $db;
-	 public $tablename = "tablename";
-	 public $columns = "columns";
-	 public $where = "where";
-	 public $orderBy = "orderBY";
+	 private $db;
+	 private $tablename = "tablename";
+	 private $columns = "columns";
+	 private $where = "where";
+	 private $orderBy = "orderBY";
+	 private $updateValue = "";
+	 private $insertValue = "";
+	 
 	 
 	 public function set_lazy_select($db,$tablename,$columns,$where,$orderBy) //set varaibles for lazy_select() function
 	 {
@@ -104,10 +107,6 @@ include('connection.php');
 			 $statement = $db->prepare($querey);
 			 $statement->execute($executeArray);
 			 $arr = $statement->errorInfo();
-/*			 if($arr)
-			 {
-			 print_r("database handling error".$arr);
-			 }	*/	 
 		 }	
 		 $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 		 $count = $statement->rowCount();
@@ -121,23 +120,20 @@ include('connection.php');
 				{
 					$result_success[$key] = $value;				
 				}
+				$result_success["message"] = "success";
 				array_push($result,$result_success);
 			}
 		 }else
 		 {
 			$result_failed = array("message" => "failed");
 			array_push($result,$result_failed);
-		 }
-		 
+			/*if($arr)
+			 { //to detect what sql code is wrong
+			 print_r("database handling error".$arr);
+			 }	*/	 
+		 } 
 		 echo json_encode($result);
-		 
 	 }
-	 
- }
- 
-
- 
- 
  
 /* $test = new database;
  //$columns = array(f_name, l_name, secruitycode);
@@ -148,6 +144,9 @@ include('connection.php');
  $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy);
  $test->lazy_select();
 */ 
+
+
+
 /* 
   Class Rule
   - $db is from connection.php as pdo function	
@@ -162,5 +161,136 @@ include('connection.php');
    //set_lazy_select($db,$tablename,$columns,$where,$orderBy)
   - $test->lazy_select();  
 */
+
+	 public function set_lazy_insert($db,$tablename,$insertValue) //set varaibles for lazy_insert() function
+	 {
+		 $this->db = $db;
+		 $this->tablename = $tablename;
+		 $this->insertValue = $insertValue;
+	 }
+	 
+	 public function lazy_insert()//insert function nfor all database input
+	 {
+		 $db = $this->db;
+		 $tablename = $this->tablename;
+		 $insertValue = $this->insertValue;
+		 $querey ="INSERT INTO ";
+		 $querey = $querey . $tablename . "(";
+		 $arrlength = count($insertValue);
+		 $whereCount = 0;
+		 foreach($insertValue as $i => $i_value )
+		 {
+			 $whereCount++;
+			 $querey = $querey . " " . $i;
+			 if($whereCount >= 1 && $whereCount < $arrlength)
+			 {
+				 $querey = $querey . ",";
+			 }
+		 }
+		 $querey = $querey . ") VALUES (";		 
+		 $whereCountValue = 0;
+		 foreach($insertValue as $z => $z_value )
+		 {
+			 $whereCountValue++;
+			 $querey = $querey . ":" . $z;
+			 if($whereCountValue >= 1 && $whereCountValue < $arrlength)
+			 {
+				 $querey = $querey . ",";
+			 }
+		 }
+		 $querey = $querey . ")";
+		 $executeArray = array(); 
+			 foreach($insertValue as $z => $z_value) {
+				$executeArray[":".$z.""] = "".$z_value."";
+			 }
+		 $statement = $db->prepare($querey);
+		 $result = array();
+		 if ($statement->execute($executeArray))
+		 {
+			$result_success = array("message" => "success");
+			array_push($result,$result_success);		 
+		 } else
+		 {
+			 $arr = $statement->errorInfo();
+			 array_push($result,$arr);
+		 }
+		 echo json_encode($result);
+	 }
+/*   $test = new database;
+   $insertValue = array("username" => "Admin_2", "password" => "123456", "f_name" => "asdasd", "l_name" => "asdcad", "email" => "123456@", "usertype" => "admintest", "secruitycode" => "1234asdadsd56");
+   $test->set_lazy_insert($db,"userinfo",$insertValue);
+   $test->lazy_insert();*/
+   
+   	 public function set_lazy_delete($db,$tablename,$where) //set varaibles for lazy_insert() function
+	 {
+		 $this->db = $db;
+		 $this->tablename = $tablename;
+		 $this->where = $where;
+	 }
+	 
+	 public function lazy_delete()
+	 {
+		 $db = $this->db;
+		 $tablename = $this->tablename;
+		 $where = $this->where;
+		 $querey ="DELETE FROM ";
+		 $querey = $querey . $tablename . " WHERE ";
+		 $arrlength = count($where);
+		 $whereCount = 0;
+		 foreach($where as $i => $i_value )
+		 {
+			 $whereCount++;
+			 $querey = $querey . " " . $i . " = " . ":" .$i;
+			 if($whereCount >= 1 && $whereCount < $arrlength)
+			 {
+				 $querey = $querey . " AND ";
+			 }
+		 }
+		 
+		 $executeArray = array(); 
+			 foreach($where as $z => $z_value) {
+				$executeArray[":".$z.""] = "".$z_value."";
+		  }
+		  
+		 $statement = $db->prepare($querey);
+		 $result = array();
+		 if ($statement->execute($executeArray))
+		 {
+			$result_success = array("message" => "success");
+			array_push($result,$result_success);		 
+		 } else
+		 {
+			 $arr = $statement->errorInfo();
+			 array_push($result,$arr);
+		 }	 
+		 echo json_encode($result); 
+	 }
+ 
+/*  $test = new database;
+  $where = array("username"=> "admin","password" =>"123");
+  $test->set_lazy_delete($db,"userinfo",$where);
+  $test->lazy_delete();*/
+  
+  
+     public function set_lazy_update($db,$tablename,$updateValue,$where) //set varaibles for lazy_update() function
+	 {
+		 $this->db = $db;
+		 $this->tablename = $tablename;
+		 $this->updateValue = $updateValue;
+		 $this->where = $where;
+	 }
+	 
+	 public function lazy_update()
+	 {
+		 $db = $this->db;
+		 $tablename = $this->tablename;
+		 $updateValue = $this->updateValue;
+		 $where = $this->where; 
+		 
+	 }
+  
+}
+
+   
 ?>
 

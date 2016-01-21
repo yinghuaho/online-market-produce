@@ -36,12 +36,12 @@ $("#login").click(function(){
 		console.log("Username and password not empty!");
 
 		$.ajax({
-			url: "controller/controller.php",
+			url: "controller.php",
 			dataType:"json",
 			data:{
 			  username: $("#username").val(),
 			  userpassword: $("#password").val(),
-			  mode: "Login"
+			  method: "Login"
 			},
 			type:"post",
 			success:function(result){
