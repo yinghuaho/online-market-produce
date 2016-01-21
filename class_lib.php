@@ -8,17 +8,19 @@ include('connection.php');
 	 private $columns = "columns";
 	 private $where = "where";
 	 private $orderBy = "orderBY";
+	 private $limit ="";
 	 private $updateValue = "";
 	 private $insertValue = "";
 	 
 	 
-	 public function set_lazy_select($db,$tablename,$columns,$where,$orderBy) //set varaibles for lazy_select() function
+	 public function set_lazy_select($db,$tablename,$columns,$where,$orderBy,$limit) //set varaibles for lazy_select() function
 	 {
 		 $this->db = $db;
 		 $this->tablename = $tablename;
 		 $this->columns = $columns;
 		 $this->where = $where;
 		 $this->orderBy = $orderBy;
+		 $this->limit = $limit;
 	 }
 	 
 	 public function lazy_select() //function supports all kind of database select function 
@@ -28,8 +30,10 @@ include('connection.php');
 		 $columns = $this->columns;
 		 $where = $this->where;
 		 $orderBy = $this->orderBy;
+		 $limit = $this->limit;
 		 $querey ="SELECT ";
 		 $arrlength = count($columns);
+		 
 		 if($arrlength == 0 )
 		 {
 			$querey ="SELECT * ";
@@ -49,23 +53,43 @@ include('connection.php');
 		 $querey = $querey . "FROM ". $tablename;
 		 $arrlengthWhere = count($where);
 		 $arrlengthOrderBy = count($orderBy);
+		 $lengthLimit = count($limit);
 		 if($arrlengthWhere == 0 )
 		 {
-		 if($arrlengthOrderBy != 0)
-			 {
-				$querey = $querey . " ORDER BY  ";
+			 
+			 if($arrlengthOrderBy != 0)
+				 {
+					$querey = $querey . " ORDER BY  ";
+					 
+					$oderByCount = 0;
+					for($c = 0; $c <$arrlengthOrderBy; $c++)
+					{
+						 $oderByCount ++;
+						 $querey = $querey . $orderBy[$c] . " ";
+						 if($oderByCount >=1 && $oderByCount < $arrlengthOrderBy)
+						 {
+							 $querey = $querey . ", ";
+						 }
+					} 
+				 }
 				 
-				$oderByCount = 0;
-				for($c = 0; $c <$arrlengthOrderBy; $c++)
-				{
-					 $oderByCount ++;
-					 $querey = $querey . $orderBy[$c] . " ";
-					 if($oderByCount >=1 && $oderByCount < $arrlengthOrderBy)
+				 
+			if($lengthLimit!= 0)
+			 {
+				 $querey = $querey . " LIMIT ";
+				 $limitcount = 0;
+				 for($l = 0; $l <$lengthLimit ; $l++)
+				 {
+					 $limitcount++;
+					 $querey = $querey . $limit[$l] . " ";
+					 if($limitcount >=1 && $limitcount < $lengthLimit)
 					 {
 						 $querey = $querey . ", ";
 					 }
-				} 
+				 }
 			 }
+			 
+			 
 			 $statement = $db->prepare($querey);
 			 $statement->execute();
 			 $arr = $statement->errorInfo();
@@ -90,6 +114,7 @@ include('connection.php');
 			 foreach($where as $z => $z_value) {
 				$executeArray[":".$z.""] = "".$z_value."";
 			 }
+			 
 			 if($arrlengthOrderBy != 0)
 			 {
 				$querey = $querey . " ORDER BY  ";		 
@@ -104,13 +129,27 @@ include('connection.php');
 					 }
 				} 
 			 }		 
+			 
+			 if($lengthLimit!= 0)
+			 {
+				 $querey = $querey . " LIMIT ";
+				 $limitcount = 0;
+				 for($l = 0; $l <$lengthLimit ; $l++)
+				 {
+					 $limitcount++;
+					 $querey = $querey . $limit[$l] . " ";
+					 if($limitcount >=1 && $limitcount < $lengthLimit)
+					 {
+						 $querey = $querey . ", ";
+					 }
+				 }
+			 }
 			 $statement = $db->prepare($querey);
 			 $statement->execute($executeArray);
 			 $arr = $statement->errorInfo();
 		 }	
 		 $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 		 $count = $statement->rowCount();
-		 
 		 $result = array();
 
 		 if($count>0)
@@ -140,8 +179,18 @@ include('connection.php');
  $columns = array();
  $where = array("username"=> "admin","password" =>"123");
  //$where = array();
+ $limit = array(1,2);
  $orderBy = array(id); //("column_name DESC or ASC or leave it blank")
- $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy);
+ $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy,$limit);
+ $test->lazy_select();
+ 
+  $test = new database;
+ //$columns = array(f_name, l_name, secruitycode);
+ $columns = array();
+ $where = array();
+ $limit = array();
+ $orderBy = array(id); //("column_name DESC or ASC or leave it blank")
+ $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy,$limit);
  $test->lazy_select();
 */ 
 
@@ -290,7 +339,6 @@ include('connection.php');
 	 }
   
 }
-
    
 ?>
 

@@ -5,11 +5,11 @@
 		<ul class="nav navbar-nav">
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">Organic Fruits</a></li>
-					<li><a href="#">Organic Vegetables</a></li>
-					<li><a href="#">Dairy</a></li>
-					<li><a href="#">Meats</a></li>
-					<li><a href="#">Other</a></li>
+					<li id "fruits" ><a href="#productDisplay">Organic Fruits</a></li>
+					<li id "vegetables"><a href="#productDisplay">Organic Vegetables</a></li>
+					<li id "dairy"><a href="#productDisplay">Dairy</a></li>
+					<li id "meants"><a href="#productDisplay">Meats</a></li>
+					<li id "other"><a href="#productDisplay">Other</a></li>
 				</ul>
 			</li>
 			<li><a href="#">About</a></li>

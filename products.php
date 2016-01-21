@@ -54,7 +54,7 @@
 
 <!-- ================================== FILTERS ================================== -->
 
-<div class="container">
+<div id= "productDisplay" class="container">
 	<div class="col-md-5"> <h2 class="bg-warning text-center">Fresh Products</h2> </div>
 	<div class="col-md-7 text-center"> 
 		<form class="form-inline" style="padding-top: 20px;"><!--  ADD A CLASS FOR THIS PADDING LATER !!!!!!!!!!!!!!! -->
@@ -83,10 +83,10 @@
 
 
 <!-- ================================== ACTUAL PRODUCTS ================================== -->
-<div class="container">
+<div id="productscontainer" class="container">
 	<div id="products_display" class="row text-center">
 	</div> <!-- ROW -->
-
+<button>2</button>
 </div> 	<!-- CONTAINER -->
 
 
