@@ -8,7 +8,7 @@ include('connection.php');
 		
 		
 		//When page load, user ajax to retrieve on sale items from database
-		var loadingProducts = function(pagenumber){
+		var loadingProducts = function(itemlimit){
 				$.ajax({
 					url: "controller.php",
 					dataType:"json",
@@ -92,7 +92,7 @@ include('connection.php');
 		console.log(onsaleItemAmount);
 		var pages = onsaleItemAmount / 20;
 		console.log(pages);
-		
+		var itemlimit ="";
 		if(pages>0)
 		{
 			var pagesnumber = pages.toFixed(0);
