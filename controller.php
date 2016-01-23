@@ -24,13 +24,19 @@ include('class_lib.php');
 }
 
 
- if($_POST['method'] == "navbarSearch"){
+ if($_POST['method'] == "displayProducts"){
 	 $prdocuts = new database;
 	 $columns = array(id,product_name, product_description, price, amount, category, sale, dateupdated,image);
 	 $where = array("sale"=> "true");
 	 //make variables post from html for category name
 	 /*$orderBy = array();*/
-	 $prdocuts->set_lazy_select($db,"inventory",$columns,$where,$orderBy);
+	 if($_POST['limit'] == 0)
+	 {
+		 $limit = array(20);
+	 }else{
+		$limit = array(20,$_POST['limit']); 
+	 }
+	 $prdocuts->set_lazy_select($db,"inventory",$columns,$where,$orderBy,$limit);
 	 $prdocuts->lazy_select();
 }
 ?>

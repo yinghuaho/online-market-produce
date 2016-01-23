@@ -31,3 +31,8 @@ footer {
 	font-size: 2em;
 }
 
+button[disabled]{
+    cursor: default;
+    background: grey;
+}
+

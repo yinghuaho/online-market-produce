@@ -8,12 +8,13 @@ include('connection.php');
 		
 		
 		//When page load, user ajax to retrieve on sale items from database
-		var loadingProducts = function(itemlimit){
+		var loadingProducts = function(limit){
 				$.ajax({
 					url: "controller.php",
 					dataType:"json",
 					data:{
-					  method: "productsOnSale"
+					  method: "displayProducts",
+					  limit: limit
 					},
 					type:"post",
 					success:function(result){
@@ -77,7 +78,7 @@ include('connection.php');
 			 });
 			
 	
-		loadingProducts();
+		//loadingProducts();
 		
 		//logic for page number count.... continue
 		var onsaleItemAmount =	
@@ -97,20 +98,105 @@ include('connection.php');
 		{
 			var pagesnumber = pages.toFixed(0);
 			$("#next,#prev").show();
-
-			$("#pages").append("<button id='"+pagesnumber+"pages'>1</button>");
+			loadingProducts();
+			$("#pages").append("<button id='0pages' class='pagebutton'>1</button>");
+			$("#next,#prev").removeClass().addClass("0pages");
+			$("#prev").attr("disabled",true);
 			for(var i=1; i<pages; i++)
 			{
 				var pageNum = i + 1;
-				$("#pages").append("<button id='"+i+"pages'>"+pageNum+"</button>");
+				$("#pages").append("<button id='"+i+"pages' class='pagebutton' >"+pageNum+"</button>");
 			}
 		}else
 		{
-			$("#next,$prev").hide();
+			itemlimit = 0;
+			$("#next,#prev").hide();
 			loadingProducts();	
 		}
+				
+		$(document).on('click','.pagebutton', function(){
+			$('#products_display').html("");
+			var limit = parseInt(this.id) * 20;
+			loadingProducts(limit);
+			if(this.id == "0pages")
+			{
+				$("#prev").attr("disabled",true);	
+			}else
+			{
+				$("#prev").attr("disabled",false);
+			}
+			var maxpages = $("div .pagebutton").length;
+			var maxpageclassname = maxpages-1 +"pages";
+			if(this.id == maxpageclassname)
+			{
+				$("#next").attr("disabled",true);
+			}else
+			{
+				$("#next").attr("disabled",false);
+			}
+			
+			
+			
+			$("#next,#prev").removeClass().addClass(this.id);
+
 		
+		});
 		
+		$("#next").click(function(){
+			$("#prev").attr("disabled",false);
+			var currentnewclass = parseInt(this.className);
+			console.log(currentnewclass);
+			var currentpage = currentnewclass.toString() + "pages";
+			console.log(currentpage);
+			var maxpages = $("div .pagebutton").length;
+			var maxpageclassname = maxpages-1+"pages";
+			console.log(maxpageclassname);
+			console.log(currentpage);
+			console.log(maxpageclassname);
+			if(currentpage == maxpageclassname)
+			{
+				$("#next").attr("disabled",true);
+				
+			}else
+			{
+				console.log("worked");
+				$('#products_display').html("");
+				$("#next").attr("disabled",false);
+				var page = parseInt(this.className)+1;
+				var limit = page*20;
+				var newclass = parseInt(this.className)+1 + "pages";
+				$("#next,#prev").removeClass().addClass(newclass);
+				loadingProducts(limit);
+				if(newclass == maxpageclassname)
+				{
+					$("#next").attr("disabled",true);
+				}
+			}
+			
+		});
+		
+		$("#prev").click(function(){
+			$("#next").attr("disabled",false);
+			if(this.className == "0pages")
+			{
+				$("#prev").attr("disabled",true);
+			}else
+			{
+				$("#prev").attr("disabled",false);
+				var currentpage = this.className;
+				$('#products_display').html("");
+				var page = parseInt(this.className)-1;
+				console.log(page);
+				var limit = page*20;
+				console.log(limit);
+				var newclass = parseInt(this.className)-1 + "pages";
+				$("#next,#prev").removeClass().addClass(newclass);
+				loadingProducts(limit);
+			}
+
+			
+			
+		});
 		
 		
 	});
