@@ -11,7 +11,8 @@ include('connection.php');
 		var orderby = "";
 		
 		//When page load, user ajax to retrieve on sale items from database
-		var loadingProducts = function(limit,wherename,where){
+		var loadingProducts = function(limit){
+			console.log(orderby);
 				$.ajax({
 					url: "controller.php",
 					dataType:"json",
@@ -19,7 +20,8 @@ include('connection.php');
 					  method: "displayProducts",
 					  limit: limit,
 					  wherename: wherename,
-					  where:where
+					  where:where,
+					  orderby:orderby
 					},
 					type:"post",
 					success:function(result){
@@ -52,13 +54,11 @@ include('connection.php');
 			$("#pages").html("");
 			$('#products_display').html("");
 			var pages = onsaleItemAmount / 20;
-			console.log(pages);
-			var itemlimit ="";
 			if(pages>0)
 			{
 				var pagesnumber = pages.toFixed(0);
 				$("#next,#prev").show();
-				loadingProducts(limit,wherename,where);
+				loadingProducts(limit);
 				$("#pages").append("<button id='0pages' class='pagebutton'>1</button>");
 				$("#next,#prev").removeClass().addClass("0pages");
 				$("#prev").attr("disabled",true);
@@ -69,9 +69,8 @@ include('connection.php');
 				}
 			}else
 			{
-				itemlimit = 0;
 				$("#next,#prev").hide();
-				loadingProducts(limit,wherename,where);	
+				loadingProducts();	
 			}	
 		};
 		
@@ -80,7 +79,7 @@ include('connection.php');
 		$(document).on('click','.pagebutton', function(){
 			$('#products_display').html("");
 			var limit = parseInt(this.id) * 20;
-			loadingProducts(limit,wherename,where);
+			loadingProducts(limit);
 			if(this.id == "0pages")
 			{
 				$("#prev").attr("disabled",true);	
@@ -129,7 +128,7 @@ include('connection.php');
 				var limit = page*20;
 				var newclass = parseInt(this.className)+1 + "pages";
 				$("#next,#prev").removeClass().addClass(newclass);
-				loadingProducts(limit,wherename,where);
+				loadingProducts(limit);
 				if(newclass == maxpageclassname)
 				{
 					$("#next").attr("disabled",true);
@@ -149,12 +148,10 @@ include('connection.php');
 				var currentpage = this.className;
 				$('#products_display').html("");
 				var page = parseInt(this.className)-1;
-				console.log(page);
 				var limit = page*20;
-				console.log(limit);
 				var newclass = parseInt(this.className)-1 + "pages";
 				$("#next,#prev").removeClass().addClass(newclass);
-				loadingProducts(limit,wherename,where);
+				loadingProducts(limit);
 			}
 
 			
@@ -182,19 +179,21 @@ include('connection.php');
 			});
 			
 			//nav smooth animation
-			$(".navbar a").on('click', function(event) {
+			$(".dropdown-menu a").on('click', function(event) {
 				
 				  // Prevent default anchor click behavior
 				  event.preventDefault();
 				
 				  // Store hash
 				  var hash = this.hash;
+				  console.log(hash);
 				
 				  // Using jQuery's animate() method to add smooth page scroll
 				  // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
 				  $('html, body').animate({
 					scrollTop: $(hash).offset().top
 				  }, 900, function(){
+					  /*window.location.hash = hash;*/
 					});
 			 });
 			 
@@ -224,7 +223,9 @@ include('connection.php');
 								 Print($result);
 							?>;
 							
-							console.log(onsaleItemAmount);			
+							console.log(onsaleItemAmount);	
+							where = "";
+							wherename ="";		
 							loadpages();
 						break;
 						case "Fruits":
@@ -296,6 +297,102 @@ include('connection.php');
 					}
 				});
 				
+				$("#selectSort").on("change", function(){
+					console.log(this.value);
+					switch(this.value){
+						case "Lowest":
+							orderby = "price ASC";
+							console.log(orderby);		
+							loadpages();
+						break;
+						case "Highest":	
+							orderby = "price DESC";		
+							loadpages();
+						break;	
+						case "Availability":
+							orderby = "amount DESC";	
+							loadpages();
+						break;
+						case "Newest":
+							orderby = "id DESC";
+							loadpages();
+						break;
+
+					}
+				});
+				
+				
+				$("#Fruits, #Vegetables, #Dairy, #Meats, #Other").on("click", function(){
+					console.log(this.id);
+					switch(this.id){
+						case "Fruits":
+							onsaleItemAmount  =
+							<?php 
+								 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Fruits';";
+								 $statement = $db->prepare($querey);
+								 $statement->execute();
+								 $result = $statement->fetchColumn();
+								 Print($result);
+							?>;
+							where = "Fruits";
+							wherename = "category";		
+							loadpages();
+						break;
+						case "Vegetables":
+							onsaleItemAmount  =
+								<?php 
+									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Vegetables';";
+									 $statement = $db->prepare($querey);
+									 $statement->execute();
+									 $result = $statement->fetchColumn();
+									 Print($result);
+								?>;
+								where = "Vegetables";
+								wherename = "category";			
+								loadpages();
+						break;	
+						case "Dairy":
+							onsaleItemAmount  =
+								<?php 
+									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Dairy';";
+									 $statement = $db->prepare($querey);
+									 $statement->execute();
+									 $result = $statement->fetchColumn();
+									 Print($result);
+								?>;
+								where = "Dairy";
+								wherename = "category";			
+								loadpages();
+						break;
+						case "Meats":
+							onsaleItemAmount  =
+								<?php 
+									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Meats';";
+									 $statement = $db->prepare($querey);
+									 $statement->execute();
+									 $result = $statement->fetchColumn();
+									 Print($result);
+								?>;
+								where = "Meats";
+								wherename = "category";		
+								loadpages();
+						break;
+						case "Other":
+							onsaleItemAmount  =
+								<?php 
+									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Other';";
+									 $statement = $db->prepare($querey);
+									 $statement->execute();
+									 $result = $statement->fetchColumn();
+									 Print($result);
+								?>;
+								where = "Fruits";
+								wherename = "Other";		
+								loadpages();
+						break;
+
+					}
+				});
 				
 		
 	});

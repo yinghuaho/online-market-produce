@@ -5,11 +5,11 @@
 		<ul class="nav navbar-nav">
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li id "fruits" ><a href="#productDisplay">Organic Fruits</a></li>
-					<li id "vegetables"><a href="#productDisplay">Organic Vegetables</a></li>
-					<li id "dairy"><a href="#productDisplay">Dairy</a></li>
-					<li id "meants"><a href="#productDisplay">Meats</a></li>
-					<li id "other"><a href="#productDisplay">Other</a></li>
+					<li id="Fruits" ><a href="#productDisplay">Organic Fruits</a></li>
+					<li id="Vegetables"><a href="#productDisplay">Organic Vegetables</a></li>
+					<li id="Dairy"><a href="#productDisplay">Dairy</a></li>
+					<li id="Meats"><a href="#productDisplay">Meats</a></li>
+					<li id="Other"><a href="#productDisplay">Other</a></li>
 				</ul>
 			</li>
 			<li><a href="#">About</a></li>
@@ -24,7 +24,6 @@
 				  </div>
 				</form>
 			</li>
-			<li><a href="login.php">Login</a></li>
 			<li><a href="#">Shopping Cart <span class="badge">0</span></a></li>
 		</ul>
 	</div>	<!-- CONTAINER -->

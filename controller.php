@@ -31,7 +31,7 @@ include('class_lib.php');
 	 /*$orderBy = array();*/
 	 if($_POST['limit'] == 0)
 	 {
-		 $limit = array(20);
+		$limit = array(20);
 	 }else{
 		$limit = array(20,$_POST['limit']); 
 	 }
@@ -41,6 +41,13 @@ include('class_lib.php');
 		 $where = array();
 	 }else{
 		 $where = array($_POST['wherename']=>$_POST['where']);
+	 }
+	 
+	 if($_POST['orderby'] == "")
+	 {
+		 $orderBy = array();
+	 }else{
+		 $orderBy = array($_POST['orderby']);
 	 }
 	 $prdocuts->set_lazy_select($db,"inventory",$columns,$where,$orderBy,$limit);
 	 $prdocuts->lazy_select();
