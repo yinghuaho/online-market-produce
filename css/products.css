@@ -28,23 +28,39 @@
         width: 100%;
         top: 0; } }
 
-.pagination #pages {
+.pagination-wrapper {
+  text-align: center; }
+
+.pagination {
   display: inline-block;
-  float: left; }
-  .pagination #pages li {
+  overflow: auto;
+  width: auto;
+  margin: 0; }
+  .pagination #pages {
+    display: inline-block;
     float: left; }
-  .pagination #pages button {
-    position: relative;
-    float: left;
-    padding: 6px 12px;
-    margin-left: -1px;
-    line-height: 1.42857143;
-    color: #337ab7;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd; }
-    .pagination #pages button:hover {
-      background: #ccc; }
+    .pagination #pages li {
+      float: left; }
+    .pagination #pages button {
+      position: relative;
+      float: left;
+      padding: 6px 12px;
+      margin-left: -1px;
+      line-height: 1.42857143;
+      color: #F2F2F2;
+      text-decoration: none;
+      background-color: #486834;
+      border: 1px solid #F2F2F2; }
+      .pagination #pages button:hover {
+        background: #B2C965;
+        color: #4D4D4D; }
+  .pagination li:first-child > a, .pagination li:last-child > a {
+    background: #486834;
+    border: 1px solid #F2F2F2;
+    color: #F2F2F2; }
+    .pagination li:first-child > a:hover, .pagination li:last-child > a:hover {
+      background: #B2C965;
+      color: #4D4D4D; }
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 						CARD AND IMAGES FOR PRODUCTS
