@@ -9,7 +9,6 @@
     </navReplace>
 
 <!-- ================================== TITLE AND IMAGE SLIDER ================================== -->
-<div id="test">asdasd</div>
 
 <div class="container">
 	<h1 class="text-center">Fresh 'n Healthy: Online Farmers' Market</h1>
@@ -59,24 +58,24 @@
 	<div class="col-md-7 text-center"> 
 		<form class="form-inline" style="padding-top: 20px;"><!--  ADD A CLASS FOR THIS PADDING LATER !!!!!!!!!!!!!!! -->
 			<label>Filters</label>
-				<select class="form-control">
-					<option>-- By Category --</option>
-					<option>Organic Fruits</option>
-					<option>Organic Vegetables</option>
-					<option>Dairy</option>
-					<option>Meats</option>
-					<option>Other</option>
+				<select class="form-control"  id="selectCategory">
+					<option selected="true" disabled="disabled">-- By Category --</option>
+                    <option value="All">All</option>
+					<option value="Fruits">Organic Fruits</option>
+					<option value="Vegetables">Organic Vegetables</option>
+					<option value="Dairy">Dairy</option>
+					<option value="Meats">Meats</option>
+					<option value="Other">Other</option>
 				</select>
 
-				<select class="form-control">
-					<option>-- Sort By --</option>
-					<option>Price: Lowest to Highest</option>
-					<option>Price: Highest to Lowest</option>
-					<option>Availability</option>
-					<option>Newest Products</option>
+				<select class="form-control" id="selectSort">
+					<option selected="true" disabled="disabled">-- Sort By --</option>
+					<option value="Lowest">Price: Lowest to Highest</option>
+					<option value="Highest">Price: Highest to Lowest</option>
+					<option value="Availability">Availability</option>
+					<option value="Newest">Newest Products</option>
 				</select>
 
-				<button type="submit" class="btn btn-success">GO</button>
 		</form> <!-- INLINE FORM -->
 	</div>	<!-- COLUMN 7 -->
 </div> 	<!-- CONTAINER -->
@@ -86,7 +85,24 @@
 <div id="productscontainer" class="container">
 	<div id="products_display" class="row text-center">
 	</div> <!-- ROW -->
-<button id="prev">Prev</button><div id="pages"></div><button id="next">Next</button>
+
+<ul class="pagination">
+   <li>
+      <a id="prev" href="#" aria-label="Previous">
+        <span aria-hidden="true">Prev</span>
+      </a>
+    </li>
+    <div id="pages">
+
+    </div>
+    <li>
+      <a id="next" href="#" aria-label="Next">
+        <span aria-hidden="true">Next</span>
+      </a>
+    </li>
+</ul>
+
+
 </div> 	<!-- CONTAINER -->
 
 
