@@ -86,6 +86,7 @@
 	<div id="products_display" class="row text-center">
 	</div> <!-- ROW -->
 
+<div class="pagination-wrapper">
 <ul class="pagination">
    <li>
       <a id="prev" href="#" aria-label="Previous">
@@ -101,6 +102,7 @@
       </a>
     </li>
 </ul>
+</div>
 
 
 </div> 	<!-- CONTAINER -->
