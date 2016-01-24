@@ -1,30 +1,44 @@
-<nav class="navbar navbar-inverse navbar-fixed" metal:define-macro="nav_bar">
+<nav class="navbar navbar-inverse navbar-fixed market-nav" metal:define-macro="nav_bar">
 	<div class="container">
-		<a class="navbar-brand" href="products.php">Logo</a>
 
-		<ul class="nav navbar-nav">
-			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li id="Fruits" ><a href="#productDisplay">Organic Fruits</a></li>
-					<li id="Vegetables"><a href="#productDisplay">Organic Vegetables</a></li>
-					<li id="Dairy"><a href="#productDisplay">Dairy</a></li>
-					<li id="Meats"><a href="#productDisplay">Meats</a></li>
-					<li id="Other"><a href="#productDisplay">Other</a></li>
-				</ul>
-			</li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Contact</a></li>
-		</ul>
+<div class="navbar-header">
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	</button>
+	<a class="navbar-brand" href="products.php">Logo</a>
+</div>
 
-		<ul class="nav navbar-nav navbar-right">
-			<li>
-				<form class="navbar-form" role="search">
-				  <div class="form-group">
-				    <input type="text" class="form-control" placeholder="Search"></input>
-				  </div>
-				</form>
-			</li>
-			<li><a href="#">Shopping Cart <span class="badge">0</span></a></li>
-		</ul>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<ul class="nav navbar-nav ">
+		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li id="fruits" ><a href="#productDisplay">Organic Fruits</a></li>
+				<li id="vegetables"><a href="#productDisplay">Organic Vegetables</a></li>
+				<li id="dairy"><a href="#productDisplay">Dairy</a></li>
+				<li id="meants"><a href="#productDisplay">Meats</a></li>
+				<li id="other"><a href="#productDisplay">Other</a></li>
+			</ul>
+		</li>
+		<li><a href="#">About</a></li>
+		<li><a href="#">Contact</a></li>
+	</ul>
+
+	<ul class="nav navbar-nav navbar-right">
+		<li>
+			<form class="navbar-form" role="search">
+			  <div class="form-group">
+			    <input type="text" class="form-control search-bar" placeholder="Search"></input>
+			  </div>
+			</form>
+		</li>
+		<li><a href="login.php">Login</a></li>
+		<li><a href="#">Shopping Cart <span class="badge">0</span></a></li>
+	</ul>
+
+</div>
+
 	</div>	<!-- CONTAINER -->
 </nav>
