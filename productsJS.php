@@ -105,7 +105,7 @@ include('connection.php');
 			for(var i=1; i<pages; i++)
 			{
 				var pageNum = i + 1;
-				$("#pages").append("<button id='"+i+"pages' class='pagebutton' >"+pageNum+"</button>");
+				$("#pages").append("<li><button id='"+i+"pages' class='pagebutton' >"+pageNum+"</button></li>");
 			}
 		}else
 		{
