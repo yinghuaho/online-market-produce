@@ -11,9 +11,9 @@
 <!-- ================================== TITLE AND IMAGE SLIDER ================================== -->
 
 <div class="container">
-	<h1 class="text-center">Fresh 'n Healthy: Online Farmers' Market</h1>
+  <h1 class="text-center">Fresh 'n Healthy: Online Farmers' Market</h1>
 
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -48,43 +48,43 @@
   </a>
 </div>
 
-</div>	<!-- CONTAINER -->
+</div>  <!-- CONTAINER -->
 
 
 <!-- ================================== FILTERS ================================== -->
 
 <div id= "productDisplay" class="container">
-	<div class="col-md-5"> <h2 class="bg-warning text-center">Fresh Products</h2> </div>
-	<div class="col-md-7 text-center"> 
-		<form class="form-inline" style="padding-top: 20px;"><!--  ADD A CLASS FOR THIS PADDING LATER !!!!!!!!!!!!!!! -->
-			<label>Filters</label>
-				<select class="form-control"  id="selectCategory">
-					<option selected="true" disabled="disabled">-- By Category --</option>
+  <div class="col-md-5"> <h2 class="bg-warning text-center">Fresh Products</h2> </div>
+  <div class="col-md-7 text-center"> 
+    <form class="form-inline">
+      <label>Filters</label>
+        <select class="form-control" id="selectCategory">
+          <option selected="true" disabled="disabled">-- By Category --</option>
                     <option value="All">All</option>
-					<option value="Fruits">Organic Fruits</option>
-					<option value="Vegetables">Organic Vegetables</option>
-					<option value="Dairy">Dairy</option>
-					<option value="Meats">Meats</option>
-					<option value="Other">Other</option>
-				</select>
+          <option value="Fruits">Organic Fruits</option>
+          <option value="Vegetables">Organic Vegetables</option>
+          <option value="Dairy">Dairy</option>
+          <option value="Meats">Meats</option>
+          <option value="Other">Other</option>
+        </select>
 
-				<select class="form-control" id="selectSort">
-					<option selected="true" disabled="disabled">-- Sort By --</option>
-					<option value="Lowest">Price: Lowest to Highest</option>
-					<option value="Highest">Price: Highest to Lowest</option>
-					<option value="Availability">Availability</option>
-					<option value="Newest">Newest Products</option>
-				</select>
+        <select class="form-control" id="selectSort">
+          <option selected="true" disabled="disabled">-- Sort By --</option>
+          <option value="Lowest">Price: Lowest to Highest</option>
+          <option value="Highest">Price: Highest to Lowest</option>
+          <option value="Availability">Availability</option>
+          <option value="Newest">Newest Products</option>
+        </select>
 
-		</form> <!-- INLINE FORM -->
-	</div>	<!-- COLUMN 7 -->
-</div> 	<!-- CONTAINER -->
+    </form> <!-- INLINE FORM -->
+  </div>  <!-- COLUMN 7 -->
+</div>  <!-- CONTAINER -->
 
 
 <!-- ================================== ACTUAL PRODUCTS ================================== -->
 <div id="productscontainer" class="container">
-	<div id="products_display" class="row text-center">
-	</div> <!-- ROW -->
+  <div id="products_display" class="row text-center">
+  </div> <!-- ROW -->
 
 <div class="pagination-wrapper">
 <ul class="pagination">
@@ -105,7 +105,7 @@
 </div>
 
 
-</div> 	<!-- CONTAINER -->
+</div>  <!-- CONTAINER -->
 
 
 <!-- ================================== FOOTER ================================== -->
