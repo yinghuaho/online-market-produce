@@ -8,7 +8,9 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	</button>
-	<a class="navbar-brand" href="products.php">Logo</a>
+	<a class="navbar-brand" href="products.php">
+		<img alt="Brand" src="./imgs/FnH_Logo_SVGv2.svg"/>
+	</a>
 </div>
 
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
