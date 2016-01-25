@@ -11,19 +11,6 @@ include('class_lib.php');
 	 $login->lazy_select();
 }
 
-
- if($_POST['method'] == "productsOnSale"){
-	 $prdocuts = new database;
-	 $columns = array(id,product_name, product_description, price, amount, category, sale, dateupdated,image);
-	 $where = array("sale"=> "true");
-	 //make variables post from html for category name
-	 /*$orderBy = array();
-	 $limit = array(20,$_POST['limit']);*/
-	 $prdocuts->set_lazy_select($db,"inventory",$columns,$where,$orderBy);
-	 $prdocuts->lazy_select();
-}
-
-
  if($_POST['method'] == "displayProducts"){
 	 $prdocuts = new database;
 	 $columns = array(id,product_name, product_description, price, amount, category, sale, dateupdated,image);
