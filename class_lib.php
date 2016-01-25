@@ -7,13 +7,14 @@ include('connection.php');
 	 private $tablename = "tablename";
 	 private $columns = "columns";
 	 private $where = "where";
+	 private $wherestyle = "";
 	 private $orderBy = "orderBY";
 	 private $limit ="";
 	 private $updateValue = "";
 	 private $insertValue = "";
 	 
 	 
-	 public function set_lazy_select($db,$tablename,$columns,$where,$orderBy,$limit) //set varaibles for lazy_select() function
+	 public function set_lazy_select($db,$tablename,$columns,$where,$orderBy,$limit,$wherestyle) //set varaibles for lazy_select() function
 	 {
 		 $this->db = $db;
 		 $this->tablename = $tablename;
@@ -21,6 +22,7 @@ include('connection.php');
 		 $this->where = $where;
 		 $this->orderBy = $orderBy;
 		 $this->limit = $limit;
+		 $this->wherestyle = $wherestyle;
 	 }
 	 
 	 public function lazy_select() //function supports all kind of database select function 
@@ -31,6 +33,7 @@ include('connection.php');
 		 $where = $this->where;
 		 $orderBy = $this->orderBy;
 		 $limit = $this->limit;
+		 $wherestyle = $this->wherestyle;
 		 $querey ="SELECT ";
 		 $arrlength = count($columns);
 		 
@@ -52,6 +55,7 @@ include('connection.php');
 		 } 		 
 		 $querey = $querey . "FROM ". $tablename;
 		 $arrlengthWhere = count($where);
+		 $lengthwherestyle = count($wherestyle);
 		 $arrlengthOrderBy = count($orderBy);
 		 $lengthLimit = count($limit);
 		 if($arrlengthWhere == 0 )
@@ -104,7 +108,15 @@ include('connection.php');
 			 $whereCount = 0;
 			 foreach($where as $i => $i_value) {
 				$whereCount++;
-				$querey = $querey . " " . $i . " = " . ":" . $i. " ";
+				
+				if($lengthwherestyle != 0)
+				{
+					$querey = $querey . " " . $i . " ". $wherestyle ." " . ":" . $i. " ";
+				}else
+				{
+					$querey = $querey . " " . $i . " = " . ":" . $i. " ";
+				}
+				
 				if($whereCount >= 1 && $whereCount < $arrlengthWhere)
 				{
 					$querey = $querey . " AND ";

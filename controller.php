@@ -36,7 +36,22 @@ include('class_lib.php');
 	 }else{
 		 $orderBy = array($_POST['orderby']);
 	 }
-	 $prdocuts->set_lazy_select($db,"inventory",$columns,$where,$orderBy,$limit);
+	 
+	 if($_POST['wherestyle'] == "")
+	 {
+		 $wherestyle = "=";
+	 }else{
+		 $wherestyle = $_POST['wherestyle'];
+	 }
+	 $prdocuts->set_lazy_select($db,"inventory",$columns,$where,$orderBy,$limit,$wherestyle);
 	 $prdocuts->lazy_select();
+}
+
+ if($_POST['method'] == "searchBar"){
+	 $querey = "SELECT COUNT(*) FROM inventory WHERE product_name LIKE '%".$_POST['searchname']."%';";
+	 $statement = $db->prepare($querey);
+	 $statement->execute();
+	 $result = $statement->fetchColumn();
+	 Print($result);
 }
 ?>

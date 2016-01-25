@@ -6,6 +6,7 @@ include('connection.php');
 		
 		console.log("js coonected");
 		var where = "";
+		var wherestyle ="";
 		var wherename ="";
 		var limit = 0;
 		var orderby = "";
@@ -21,6 +22,7 @@ include('connection.php');
 					  limit: limit,
 					  wherename: wherename,
 					  where:where,
+					  wherestyle:wherestyle,
 					  orderby:orderby
 					},
 					type:"post",
@@ -231,7 +233,8 @@ include('connection.php');
 							
 							console.log(onsaleItemAmount);	
 							where = "";
-							wherename ="";		
+							wherename ="";	
+							wherestyle ="";	
 							loadpages();
 						break;
 						case "Fruits":
@@ -244,7 +247,8 @@ include('connection.php');
 								 Print($result);
 							?>;
 							where = "Fruits";
-							wherename = "category";		
+							wherename = "category";	
+							wherestyle ="";	
 							loadpages();
 						break;
 						case "Vegetables":
@@ -257,7 +261,8 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Vegetables";
-								wherename = "category";			
+								wherename = "category";	
+								wherestyle ="";		
 								loadpages();
 						break;	
 						case "Dairy":
@@ -270,7 +275,8 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Dairy";
-								wherename = "category";			
+								wherename = "category";	
+								wherestyle ="";		
 								loadpages();
 						break;
 						case "Meats":
@@ -284,6 +290,7 @@ include('connection.php');
 								?>;
 								where = "Meats";
 								wherename = "category";		
+								wherestyle ="";
 								loadpages();
 						break;
 						case "Other":
@@ -295,8 +302,9 @@ include('connection.php');
 									 $result = $statement->fetchColumn();
 									 Print($result);
 								?>;
-								where = "Fruits";
-								wherename = "Other";		
+								where = "Other";
+								wherename = "category";
+								wherestyle ="";		
 								loadpages();
 						break;
 
@@ -341,7 +349,8 @@ include('connection.php');
 								 Print($result);
 							?>;
 							where = "Fruits";
-							wherename = "category";		
+							wherename = "category";	
+							wherestyle ="";	
 							loadpages();
 						break;
 						case "Vegetables":
@@ -354,7 +363,8 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Vegetables";
-								wherename = "category";			
+								wherename = "category";	
+								wherestyle ="";		
 								loadpages();
 						break;	
 						case "Dairy":
@@ -367,7 +377,8 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Dairy";
-								wherename = "category";			
+								wherename = "category";	
+								wherestyle ="";		
 								loadpages();
 						break;
 						case "Meats":
@@ -380,7 +391,8 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Meats";
-								wherename = "category";		
+								wherename = "category";	
+								wherestyle ="";	
 								loadpages();
 						break;
 						case "Other":
@@ -392,14 +404,50 @@ include('connection.php');
 									 $result = $statement->fetchColumn();
 									 Print($result);
 								?>;
-								where = "Fruits";
-								wherename = "Other";		
+								where = "Other";
+								wherename = "category";
+								wherestyle ="";		
 								loadpages();
 						break;
 
 					}
 				});
 				
+		
+				$("#search").keypress(function(event) {
+					  if ( event.which == 13 ) {
+						  event.preventDefault();
+						  $.ajax({
+							url: "controller.php",
+							dataType:"json",
+							data:{
+							  method: "searchBar",
+							  searchname: $("#search").val()
+							},
+							type:"post",
+							success:function(result){
+							  onsaleItemAmount = result;	
+							  console.log(onsaleItemAmount);  
+							},//success:function(result)	
+							error: function(jqXHR,textStatus, errorThrown) {
+								console.log(jqXHR); 
+								console.log(textStatus); 
+								console.log(errorThrown); 
+							}
+						});//ajax	
+						
+							wherename = "product_name";
+							where = "%"+$("#search").val()+"%";
+							wherestyle ="LIKE";		
+							loadpages();
+							wherename = "";
+							where = "";
+							wherestyle ="";	
+							
+					  }
+
+				});
+		
 		
 	});
 	

@@ -32,7 +32,7 @@
 		<li>
 			<form class="navbar-form" role="search">
 			  <div class="form-group">
-			    <input type="text" class="form-control search-bar" placeholder="Search"></input>
+			    <input id="search" type="text" class="form-control search-bar" placeholder="Search"></input>
 			  </div>
 			</form>
 		</li>
