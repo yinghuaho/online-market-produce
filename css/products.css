@@ -151,9 +151,9 @@ footer {
   bottom: 15px;
   font-size: 2em; }
 
-button[disabled] {
+a[disabled] {
   cursor: default;
-  background: grey; }
+  background: grey !important; }
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
             FOOTER

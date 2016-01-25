@@ -104,7 +104,8 @@ include('connection.php');
 		
 		});
 		
-		$("#next").click(function(){
+		$("#next").click(function(e){
+			e.preventDefault();
 			$("#prev").attr("disabled",false);
 			var currentnewclass = parseInt(this.className);
 			console.log(currentnewclass);
@@ -137,7 +138,8 @@ include('connection.php');
 			
 		});
 		
-		$("#prev").click(function(){
+		$("#prev").click(function(e){
+			e.preventDefault();
 			$("#next").attr("disabled",false);
 			if(this.className == "0pages")
 			{
@@ -152,6 +154,10 @@ include('connection.php');
 				var newclass = parseInt(this.className)-1 + "pages";
 				$("#next,#prev").removeClass().addClass(newclass);
 				loadingProducts(limit);
+				if(newclass == "0pages")
+				{
+					$("#prev").attr("disabled",true);
+				}
 			}
 
 			
