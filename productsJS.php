@@ -187,7 +187,7 @@ include('connection.php');
 			});
 			
 			//nav smooth animation
-			$(".dropdown-menu a").on('click', function(event) {
+			$(".dropdown-menu a, .top a").on('click', function(event) {
 				
 				  // Prevent default anchor click behavior
 				  event.preventDefault();
@@ -443,7 +443,9 @@ include('connection.php');
 							wherename = "";
 							where = "";
 							wherestyle ="";	
-							
+							$('html, body').animate({
+								scrollTop: parseInt($("#products_display").offset().top)
+							}, 2000);
 					  }
 
 				});
