@@ -8,7 +8,7 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	</button>
-	<a class="navbar-brand" href="products.php">
+	<a class="navbar-brand" href="http://fnh.mike-ho.com/">
 		<img alt="Brand" src="./imgs/FnH_Logo_SVGv2.svg"/>
 	</a>
 </div>
