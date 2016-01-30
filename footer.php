@@ -20,11 +20,11 @@
 	<div class="col-md-4 footer-content">
 		<h4>Follow Us On</h4>
 		<ul class="list-inline">
-			<li><img class="footer-icons" src="./imgs/facebook.svg" alt="Facebook"/></li>
-			<li><img class="footer-icons" src="./imgs/twitter.svg" alt="Twitter"/></li>
-			<li><img class="footer-icons" src="./imgs/instagram.svg" alt="Instagram"/></li>
-			<li><img class="footer-icons" src="./imgs/tumblr.svg" alt="tumblr"/></li>
-			<li><img class="footer-icons" src="./imgs/pinterest.svg" alt="Pinterest"/></li>
+			<li><a href="http://www.facebook.com" target="new"><img class="footer-icons" src="./imgs/facebook.svg" alt="Facebook"/></a></li>
+			<li><a href="http://www.twitter.com" target="new"><img class="footer-icons" src="./imgs/twitter.svg" alt="Twitter"/></a></li>
+			<li><a href="http://www.instagram.com" target="new"><img class="footer-icons" src="./imgs/instagram.svg" alt="Instagram"/></a></li>
+			<li><a href="http://www.tumblr.com" target="new"><img class="footer-icons" src="./imgs/tumblr.svg" alt="tumblr"/></a></li>
+			<li><a href="http://www.pinterest.com" target="new"><img class="footer-icons" src="./imgs/pinterest.svg" alt="Pinterest"/></a></li>
 		</ul>
 	</div>
 
