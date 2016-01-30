@@ -8,6 +8,16 @@
             MIXINS
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+            GLOBAL CSS
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+body {
+  margin-top: 50px; }
+
+h1, h2 {
+  text-transform: uppercase;
+  color: #4D4D4D; }
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
             NAVIGATION BAR
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 .market-nav {
@@ -94,10 +104,28 @@
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
             CARD AND IMAGES FOR PRODUCTS
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+.carousel-caption > h3 {
+  color: #fff; }
+
 .bg-warning {
   background-color: #FFD059;
   padding-top: 10px;
   padding-bottom: 10px; }
+
+.btn-success {
+  background-color: #486834;
+  border-color: #B2C965; }
+  .btn-success:hover {
+    background-color: #B2C965;
+    border-color: #77ab57; }
+
+.btn-danger {
+  background-color: #fff;
+  border-color: #77ab57;
+  color: #77ab57; }
+  .btn-danger:hover, .btn-danger:active, .btn-danger:focus {
+    background-color: #77ab57 !important;
+    border: 1px solid transparent; }
 
 .form-inline {
   padding-top: 32px; }
@@ -151,9 +179,9 @@ footer {
   bottom: 15px;
   font-size: 2em; }
 
-a[disabled] {
+button[disabled] {
   cursor: default;
-  background: grey !important; }
+  background: #F2F2F2; }
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
             FOOTER
