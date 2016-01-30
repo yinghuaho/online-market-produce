@@ -1,0 +1,317 @@
+@charset "utf-8";
+/* =-=-=-=-=-=-=-=-=-=-= COLOR PALETTE -=-=-=-=-=-=-=-=-=-=-= */
+/* https://coolors.co/app/ffd059-b2c965-486834-ff5804-cd4a29 */
+
+/* CSS Document */
+
+
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+						VARIABLES
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+$darkgreen: #486834;
+$lightgreen: #B2C965;
+
+$darkgray: #4D4D4D;
+$lightgray: #F2F2F2;
+
+$red: #CD4A29;
+$yellow: #FFD059;
+
+$lightengreen: lighten($darkgreen,20);
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+						MIXINS
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+$mobile-width: 480px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin mobile {
+  @media only screen and (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (max-width: $desktop-width) {
+    @content;
+  }
+}
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+						GLOBAL CSS
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+body {
+	margin-top: 50px;
+}
+
+h1, h2 {
+  text-transform: uppercase;
+  color: $darkgray;
+}
+
+h3, h4, h5, h6 {
+  color: $darkgray;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+						NAVIGATION BAR
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+.market-nav {
+	border: none;
+	border-radius: 0;
+	background-color: $darkgreen;
+	.navbar-form {
+		border-color: $lightengreen;
+		input {
+			border: 1px solid $lightengreen;
+		}
+		@include tablet {
+			margin: 0;
+		}
+	}
+
+	.navbar-brand {
+		padding: 5px 5px;
+		img {
+		width: 55px;
+		margin-left: 15px;
+		}
+	}
+
+	.navbar-nav {
+		>li>a {
+			color: $lightgray;
+		}
+	}
+
+	.search-bar {
+		width: 155px;
+		position: relative;
+		top: 2px;
+		@include tablet {
+			width: 100%;
+			top: 0;
+		}
+	}
+
+	.navbar-toggle {
+		border-color: $lightengreen;
+		&:hover, &:focus {
+			background-color: $lightgreen;
+		}
+	}
+
+	.navbar-collapse {
+		border-color: $lightengreen;
+	}
+
+	.dropdown {
+		&.open>.dropdown-menu {
+			background-color: $lightgreen;
+			border: none;
+			>li>a {
+				color: $darkgray;
+				&:hover {
+					background-color: $darkgreen;
+					color: $lightgray;
+				}
+			}
+		}
+		&.open>a:focus, &.open>a {
+			background-color: $lightgreen;
+			color: $darkgray;
+		}
+
+	}
+}
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+						PAGINATION
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+.pagination-wrapper {
+	text-align: center;
+}
+
+.pagination {
+	display: inline-block;
+	overflow: auto;
+	width: auto;
+	margin: 0;
+	#pages {
+		display: inline-block;
+		float: left;
+		li {
+			float: left;
+		}
+		button {
+			position: relative;
+			float: left;
+			padding: 6px 12px;
+			margin-left: -1px;
+			line-height: 1.42857143;
+			color: $lightgray;
+			text-decoration: none;
+			background-color: $darkgreen;
+			border: 1px solid $lightengreen;
+			&:hover {
+				background: $lightgreen;
+				color: $darkgray;
+			}
+		}
+	}
+	li {
+		&:first-child>a,
+		&:last-child>a {
+			background: $darkgreen;
+			border: 1px solid $lightengreen;
+			color: $lightgray;
+			&:hover {
+				background: $lightgreen;
+				color: $darkgray;
+			}
+		}
+	}
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+						CARD AND IMAGES FOR PRODUCTS
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+.carousel-caption>h3 {
+  color: #fff;
+}
+
+
+.bg-warning {
+	background-color: $yellow;
+	padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.btn-success {
+  background-color: $darkgreen;
+  border-color: $lightgreen;
+  &:hover {
+    background-color: $lightgreen;
+    border-color: $lightengreen;
+  }
+}
+
+.btn-danger {
+  background-color: #fff;
+  border-color: $lightengreen;
+  color: $lightengreen;
+  &:hover, &:active, &:focus {
+    background-color: $lightengreen !important;
+    border: 1px solid transparent;
+  }
+}
+
+.form-inline {
+	padding-top: 32px;
+}
+
+.card {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom:15px;
+}
+
+.card-thumbnail {
+	position: relative;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	img {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		height: 100%;
+		width: auto;
+		max-width: auto !important;
+		-webkit-transform: translate(-50%,-50%);
+		  	-ms-transform: translate(-50%,-50%);
+		      	transform: translate(-50%,-50%);
+	}
+}
+
+.row {
+	padding-top: 50px;
+}
+
+footer {
+	background: $darkgreen;
+	color: $lightgray;
+	margin-top: 50px;
+	padding-top: 30px;
+	.footer-content {
+		.footer-list {
+			padding: 0;
+			margin: 0;
+			li {
+				display: block;
+			}
+		}
+		&:nth-child(2) {
+			text-align: center;
+		}
+		&:nth-child(3) {
+			text-align: right;
+		}
+
+		@include desktop {
+			text-align: center !important;
+			margin: 25px 0;
+		}
+	}
+}
+
+.top {
+	position: fixed;
+	right: 15px;
+	bottom: 15px;
+	font-size: 2em;
+}
+
+button[disabled]{
+    cursor: default;
+    background: $lightgray;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+						FOOTER
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+.glyphicon-triangle-top {
+	color: $lightgreen;
+}
+
+.footer-icons {
+	height: 30px;
+	width: auto;
+}
+
+.footer-list>li>a {
+	color: $lightgray;
+	&:hover {
+		color: $lightgreen;
+		text-decoration: none;
+	}
+}
+
+
+
+
