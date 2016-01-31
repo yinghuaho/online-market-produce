@@ -179,9 +179,10 @@ footer {
   bottom: 15px;
   font-size: 2em; }
 
-button[disabled] {
-  cursor: default;
-  background: #F2F2F2; }
+a[disabled] {
+  cursor: default !important;
+  background: #F2F2F2 !important;
+  color: #4D4D4D !important; }
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
             FOOTER

@@ -10,6 +10,8 @@
 
 <!-- ================================== TITLE AND IMAGE SLIDER ================================== -->
 
+<div id="supertop"></div>
+
 <div class="container">
   <h1 class="text-center">Fresh 'n Healthy: Online Farmers' Market</h1>
 

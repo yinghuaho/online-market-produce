@@ -286,9 +286,10 @@ footer {
 	font-size: 2em;
 }
 
-button[disabled]{
-    cursor: default;
-    background: $lightgray;
+a[disabled]{
+    cursor: default !important;
+    background: $lightgray !important;
+    color: $darkgray !important;
 }
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
