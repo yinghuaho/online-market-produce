@@ -156,6 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a[disabled] {
   cursor: default !important;
+  pointer-events: none !important;
   background: #F2F2F2 !important;
   color: #4D4D4D !important; }
 
