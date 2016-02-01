@@ -80,6 +80,7 @@ include('connection.php');
 				
 		$(document).on('click','.pagebutton', function(){
 			$('#products_display').html("");
+         $(this).addClass("selectedPage");
 			var limit = parseInt(this.id) * 20;
 			loadingProducts(limit);
 			if(this.id == "0pages")
