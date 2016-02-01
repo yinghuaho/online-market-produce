@@ -56,7 +56,7 @@ include('connection.php');
 			$("#pages").html("");
 			$('#products_display').html("");
 			var pages = onsaleItemAmount / 20;
-			if(pages>0)
+			if(pages>1)
 			{
 				var pagesnumber = pages.toFixed(0);
 				$("#next,#prev").show();
