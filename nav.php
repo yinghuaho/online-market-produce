@@ -37,7 +37,7 @@
 			</form>
 		</li>
 		<li><a href="login.php">Login</a></li>
-		<li><a href="#">Shopping Cart <span class="badge">0</span></a></li>
+		<li><a href="cartphptal.php">Shopping Cart <span class="badge">0</span></a></li>
 	</ul>
 
 </div>
