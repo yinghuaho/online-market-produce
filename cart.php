@@ -19,52 +19,139 @@
 
   <div class="col-md-5"> <h2 class="bg-warning text-center">Shopping Cart</h2> </div>
 
-  <div class="col-md-12 text-center item-bg-color">
+<table class="table table-hover table-bordered">
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th class="unit-price">Unit Price</th>
+    <th>Subtotal</th>
+    <th></th>
+  </tr>
 
-    <div class="col-md-2">
-      <h4>Product</h4>
-        <div class="cart-card-thumbnail">
-          <img src="img_features/slider2.jpg" alt="veggies"/>
+<!-- -=-= ONE PRODUCT ROW =-=- -->
+  <tr>
+    <td> <!-- PRODUCT -->
+      <div class="cart-card-thumbnail">
+        <img src="img_features/slider2.jpg" alt="veggies"/>
+      </div>
+      <h4 class="text-center">Onions</h4>
+    </td>
+
+    <td> <!-- QUANTITY -->
+      <div class="input-group cart-input-group text-center">
+        <div class="input-group-btn">
+          <button class="btn btn-success">-</button>
         </div>
-        <h5>Onions</h5>
-        <h6>Onions make you cry. Too many ninjas chopping onions around me</h6>
-    </div>
+        <input type="text" class="form-control text-center" value="1"/>
+        <div class="input-group-btn">
+          <button class="btn btn-success">+</button>
+        </div>
+      </div>
+    </td>
 
-    <div class="col-md-3">
-      <h4>Quantity</h4>
-        <div class="col-md-8 col-md-offset-2">
-            <!-- <strong class="card-qty">QTY.</strong> -->
-              <div class="input-group">
-                <div class="input-group-btn">
-                  <button class="btn btn-success">-</button>
-                </div>
+    <td class="text-center unit-price">$8.99</td> <!-- UNIT PRICE -->
+    <td class="text-center">$8.99</td> <!-- SUBTOTAL -->
+    <td class="text-center"><button class="btn btn-danger">Remove</button></td>
+  </tr> 
+<!-- -=-= END PRODUCT ROW =-=- -->
 
-                <input type="text" class="form-control text-center" value="1"/>
 
-                <div class="input-group-btn">
-                  <button class="btn btn-success">+</button>
-                </div>
-              </div>
-        </div>  <!-- COL MD 6 -->
-    </div>
+<!-- -=-= ONE PRODUCT ROW =-=- -->
+  <tr>
+    <td> <!-- PRODUCT -->
+      <div class="cart-card-thumbnail">
+        <img src="img_features/slider2.jpg" alt="veggies"/>
+      </div>
+      <h4 class="text-center">Onions</h4>
+    </td>
 
-    <div class="col-md-1">
-      x
-    </div>
+    <td> <!-- QUANTITY -->
+      <div class="input-group cart-input-group text-center">
+        <div class="input-group-btn">
+          <button class="btn btn-success">-</button>
+        </div>
+        <input type="text" class="form-control text-center" value="1"/>
+        <div class="input-group-btn">
+          <button class="btn btn-success">+</button>
+        </div>
+      </div>
+    </td>
 
-    <div class="col-md-2">
-      <h4>Unit Price</h4>
-    </div>
+    <td class="text-center unit-price">$8.99</td> <!-- UNIT PRICE -->
+    <td class="text-center">$8.99</td> <!-- SUBTOTAL -->
+    <td class="text-center"><button class="btn btn-danger">Remove</button></td>
+  </tr>
+<!-- -=-= END PRODUCT ROW =-=- -->
 
-    <div class="col-md-2">
-      <h4>Subtotal</h4>
-    </div>
 
-    <div class="col-md-2">
-      remove
-    </div>
+<!-- -=-= ONE PRODUCT ROW =-=- -->
+  <tr>
+    <td> <!-- PRODUCT -->
+      <div class="cart-card-thumbnail">
+        <img src="img_features/slider2.jpg" alt="veggies"/>
+      </div>
+      <h4 class="text-center">Onions</h4>
+    </td>
 
-  </div> <!-- column -->
+    <td> <!-- QUANTITY -->
+      <div class="input-group cart-input-group text-center">
+        <div class="input-group-btn">
+          <button class="btn btn-success">-</button>
+        </div>
+        <input type="text" class="form-control text-center" value="1"/>
+        <div class="input-group-btn">
+          <button class="btn btn-success">+</button>
+        </div>
+      </div>
+    </td>
+
+    <td class="text-center unit-price">$8.99</td> <!-- UNIT PRICE -->
+    <td class="text-center">$8.99</td> <!-- SUBTOTAL -->
+    <td class="text-center"><button class="btn btn-danger">Remove</button></td>
+  </tr>
+<!-- -=-= END PRODUCT ROW =-=- -->
+
+
+<!-- -=-= ONE PRODUCT ROW =-=- -->
+  <tr>
+    <td> <!-- PRODUCT -->
+      <div class="cart-card-thumbnail">
+        <img src="img_features/slider2.jpg" alt="veggies"/>
+      </div>
+      <h4 class="text-center">Onions</h4>
+    </td>
+
+    <td> <!-- QUANTITY -->
+      <div class="input-group cart-input-group text-center">
+        <div class="input-group-btn">
+          <button class="btn btn-success">-</button>
+        </div>
+        <input type="text" class="form-control text-center" value="1"/>
+        <div class="input-group-btn">
+          <button class="btn btn-success">+</button>
+        </div>
+      </div>
+    </td>
+
+    <td class="text-center unit-price">$8.99</td> <!-- UNIT PRICE -->
+    <td class="text-center">$8.99</td> <!-- SUBTOTAL -->
+    <td class="text-center"><button class="btn btn-danger">Remove</button></td>
+  </tr>
+<!-- -=-= END PRODUCT ROW =-=- -->
+
+</table>
+
+<div class="col-md-6">
+  <button class="btn btn-warning">Update Cart</button>
+  </div>
+
+  <div class="col-md-6 text-right">
+    <h3><b>TOTAL:</b> $8.99</h3>
+</div>
+  
+<div class="col-md-12 text-right">
+  <button class="btn btn-info">CHECKOUT</button>
+</div>
 
 </div> <!-- container --> 
 

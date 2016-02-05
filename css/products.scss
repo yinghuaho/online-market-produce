@@ -20,6 +20,7 @@ $red: #CD4A29;
 $yellow: #FFD059;
 
 $lightengreen: lighten($darkgreen,20);
+$lightenyellow: lighten($yellow,10);
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 						MIXINS
@@ -267,12 +268,13 @@ a[disabled]{
 .item-bg-color {
 	background-color: $lightgray;
 	padding: 20px;
+  position: relative;
 }
 
 .cart-card-thumbnail {
 	position: relative;
 	width: 100%;
-	height: 130px;
+	height: 200px;
 	overflow: hidden;
 	img {
 		position: absolute;
@@ -284,9 +286,65 @@ a[disabled]{
 		-webkit-transform: translate(-50%,-50%);
 		  	-ms-transform: translate(-50%,-50%);
 		      	transform: translate(-50%,-50%);
+    @include tablet {
+      height: 150px;
+    }
 	}
 }
 
+.cart-input-group {
+  width: 120px;
+  margin: 0 auto;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+    &:nth-child(1){
+      width: 300px;
+    }
+    &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5){
+      width: 150px;
+    }
+}
+
+.unit-price {
+  @include tablet {
+    display: none;
+  }
+}
+
+.btn-warning {
+  background-color: $yellow;
+  color: $darkgray;
+  width: 50%;
+  font-size: 1.6em;
+  &:hover, &:active, &:focus {
+    background-color: $lightenyellow !important;
+    color: $darkgray;
+    border-color: $yellow;
+  }
+}
+
+.btn-info {
+  width: 50%;
+  font-size: 2em;
+  margin-top: 30px;
+}
+
+// .flexy {
+//   display: flex;
+//   align-items: center;
+//   &>div {
+//     padding: 0;
+//   }
+//     @include desktop {
+//       display: block;
+//     }
+// }
+
+// .flexy-header {
+//   display: block;
+// }
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 						FOOTER
