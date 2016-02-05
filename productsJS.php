@@ -10,6 +10,7 @@ include('connection.php');
 		var wherename ="";
 		var limit = 0;
 		var orderby = "";
+      var shoppingCartItems = [];
 		
 		//When page load, user ajax to retrieve on sale items from database
 		var loadingProducts = function(limit){
@@ -33,7 +34,7 @@ include('connection.php');
 					  {
 						  for(var i = 0; i< result.length; i++)
 						  {
-								$('#products_display').append("<div id='"+result[i].id+"products'class='col-md-3 col-sm-6'><div class='card'><div class='card-thumbnail'><img src='" +result[i].image + "'/></div><h3 class='card-title'>"+result[i].product_name+"</h3><h5 class='card-title'>$"+result[i].price+" CAD</h5><h6 class='card-title'>"+result[i].product_description+"</h6><div class='col-md-8 col-md-offset-2'><div class='input-group'><div class='input-group-btn'><button id='"+result[i].id+"minus' class='minus btn btn-success'>-</button></div><input id='"+result[i].id+"amount' type='text' class='form-control text-center' value='1'></input><div class='input-group-btn'><div id='"+result[i].id+"plus' class='add btn btn-success'>+</div></div></div></div>	<div class='clearfix'></div><button id='"+result[i].id+"toCart' class='btn btn-danger btn-block' style='margin-top: 15px;'>Add to Cart</button></div> </div>"); 	  
+								$('#products_display').append("<div id='"+result[i].id+"products'class='col-md-3 col-sm-6'><div class='card'><div class='card-thumbnail'><img id='"+result[i].id+"image' src='" +result[i].image + "'/></div><h3 id='"+result[i].id+"name' class='card-title'>"+result[i].product_name+"</h3><h5 class='card-title'>$<span id='"+result[i].id+"price'>"+result[i].price+"</span> CAD</h5><h6 class='card-title'>"+result[i].product_description+"</h6><div class='col-md-8 col-md-offset-2'><div class='input-group'><div class='input-group-btn'><button id='"+result[i].id+"minus' class='minus btn btn-success'>-</button></div><input id='"+result[i].id+"amount' type='text' class='form-control text-center' value='1'></input><div class='input-group-btn'><div id='"+result[i].id+"plus' class='add btn btn-success'>+</div></div></div></div>	<div class='clearfix'></div><button id='"+result[i].id+"toCart' class='btn btn-danger btn-block toCart' style='margin-top: 15px;'>Add to Cart</button></div> </div>"); 	  
 						  }
 						  
 					  }else if(result[0].message == "failed")
@@ -186,6 +187,29 @@ include('connection.php');
 				$("#"+input).val(itemamount);
 				}
 			});
+         
+          //plus click
+         $(document).on('click','.toCart', function(){
+            var values = parseInt(this.id);
+            var names =  $("#"+values+"name").text();
+            id='"+result[i].id+"image'
+            var imgurl =  $("#"+values+"image").prop('src');
+            var price =  $("#"+values+"price").text();
+            var quantity =  $("#"+values+"amount").val();
+/*            shoppingCartItems[0] = "asda";
+            shoppingCartItems[1] = "asdasdasda";*/
+            var cartitem = 
+            {
+             name:names,
+             imgurl:imgurl,
+             price:price,
+             quantity:quantity
+             }
+             shoppingCartItems.push(cartitem);
+            localStorage["shoppingCartItems"] = JSON.stringify(shoppingCartItems);
+            var shoppingCart = JSON.parse(localStorage["shoppingCartItems"]);
+            console.log(shoppingCart);
+         });
 			
 			//nav smooth animation
 			$(".dropdown-menu a, .top a").on('click', function(event) {
