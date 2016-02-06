@@ -3,8 +3,7 @@
 include('connection.php');
 ?>
 	$(document).ready(function(){
-		
-		console.log("js coonected");
+
 		var where = "";
 		var wherestyle ="";
 		var wherename ="";
@@ -36,6 +35,7 @@ include('connection.php');
 					},
 					type:"post",
 					success:function(result){
+
 		
 					  if(result[0].message == "success")
 					  {
@@ -214,7 +214,6 @@ include('connection.php');
              }
              shoppingCartItems.push(cartitem);
              localStorage["shoppingCartItems"] = JSON.stringify(shoppingCartItems);
-            console.log(shoppingCart);
          });
 			
 			//nav smooth animation

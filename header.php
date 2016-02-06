@@ -6,11 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css"></link>
 	<link rel="stylesheet" type="text/css" href="css/products.css"></link>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <?php  
-	include('productsJS.php'); 
-	?>
-    
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+   <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
   </head>
 
 </headMacros>
