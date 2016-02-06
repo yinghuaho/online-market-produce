@@ -10,7 +10,16 @@ include('connection.php');
 		var wherename ="";
 		var limit = 0;
 		var orderby = "";
-      var shoppingCartItems = [];
+      var retrievedData = localStorage.getItem("shoppingCartItems");
+      var shoppingCart = JSON.parse(retrievedData);
+      //LocalStorage Checking
+      if (localStorage.getItem("shoppingCartItems") === null) {
+        var shoppingCartItems = [];
+      }else{
+         var retrievedData = localStorage.getItem("shoppingCartItems");
+         var shoppingCartItems = JSON.parse(retrievedData);
+         console.log(shoppingCartItems);
+      }
 		
 		//When page load, user ajax to retrieve on sale items from database
 		var loadingProducts = function(limit){
@@ -206,8 +215,7 @@ include('connection.php');
              quantity:quantity
              }
              shoppingCartItems.push(cartitem);
-            localStorage["shoppingCartItems"] = JSON.stringify(shoppingCartItems);
-            var shoppingCart = JSON.parse(localStorage["shoppingCartItems"]);
+             localStorage["shoppingCartItems"] = JSON.stringify(shoppingCartItems);
             console.log(shoppingCart);
          });
 			
