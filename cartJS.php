@@ -50,5 +50,10 @@
        }
       
    });
+   
+   var checkout = document.getElementById("done");
+   checkout.onclick = function (){
+      window.location.href="transaction.php";
+   }
 
 </script>

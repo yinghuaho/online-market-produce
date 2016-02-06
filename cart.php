@@ -65,7 +65,7 @@
 </div>
   
 <div class="col-md-12 text-right">
-  <button class="btn btn-info">CHECKOUT</button>
+  <button id="done" class="btn btn-info" >CHECKOUT</button>
 </div>
 
 </div> <!-- container --> 
