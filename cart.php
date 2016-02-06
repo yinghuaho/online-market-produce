@@ -29,10 +29,10 @@
   </tr>
 
 <!-- -=-= ONE PRODUCT ROW =-=- -->
-  <tr ng-repeat="x in shoppingCartItems" id="{{x.id}}">
+  <tr ng-repeat="x in shoppingCartItems">
     <td> <!-- PRODUCT -->
       <div class="cart-card-thumbnail">
-        <img src="{{x.imgurl}}" alt="veggies"/>
+        <img src="{{x.imgurl}}"/>
       </div>
       <h4 class="text-center">{{x.name}}</h4>
     </td>

@@ -213,6 +213,7 @@ include('connection.php');
              }
              shoppingCartItems.push(cartitem);
              localStorage["shoppingCartItems"] = JSON.stringify(shoppingCartItems);
+             cartsLength.innerHTML = shoppingCartItems.length;
          });
 			
 			//nav smooth animation

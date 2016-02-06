@@ -2,6 +2,7 @@
 
    if (localStorage.getItem("shoppingCartItems") === null) {
      var shoppingCartItems = [];
+
    }else{
       var retrievedData = localStorage.getItem("shoppingCartItems");
       var shoppingCartItems = JSON.parse(retrievedData);
@@ -28,11 +29,11 @@
          console.log(this);
          shoppingCartItems.splice(this.$index,1);
          localStorage["shoppingCartItems"] = JSON.stringify(shoppingCartItems);
+         cartsLength.innerHTML = shoppingCartItems.length;
       }
       
       $scope.total = function(x){
          this.total_num = (x.price * x.quantity);
-         console.log(this.total_num);
          return (this.total_num);
       }
       

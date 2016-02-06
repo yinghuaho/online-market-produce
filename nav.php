@@ -37,10 +37,22 @@
 			</form>
 		</li>
 		<li><a href="login.php">Login</a></li>
-		<li><a href="cartphptal.php">Shopping Cart <span class="badge">0</span></a></li>
+		<li><a href="cartphptal.php">Shopping Cart <span id="cartsLength" class="badge">0</span></a></li>
 	</ul>
 
 </div>
 
 	</div>	<!-- CONTAINER -->
+   <script>
+   var cartsLength = document.getElementById("cartsLength");
+      if (localStorage.getItem("shoppingCartItems") === null) {
+        var shoppingCartItems = [];
+         cartsLength.innerHTML = 0;
+      }else{
+         var retrievedData = localStorage.getItem("shoppingCartItems");
+         var shoppingCartItems = JSON.parse(retrievedData);
+         cartsLength.innerHTML = shoppingCartItems.length;
+      }
+   
+   </script>
 </nav>
