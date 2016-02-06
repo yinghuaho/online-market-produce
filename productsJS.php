@@ -3,14 +3,12 @@
 include('connection.php');
 ?>
 	$(document).ready(function(){
-
 		var where = "";
 		var wherestyle ="";
 		var wherename ="";
 		var limit = 0;
 		var orderby = "";
-      var retrievedData = localStorage.getItem("shoppingCartItems");
-      var shoppingCart = JSON.parse(retrievedData);
+      
       //LocalStorage Checking
       if (localStorage.getItem("shoppingCartItems") === null) {
         var shoppingCartItems = [];
@@ -207,6 +205,7 @@ include('connection.php');
             shoppingCartItems[1] = "asdasdasda";*/
             var cartitem = 
             {
+             id:values,
              name:names,
              imgurl:imgurl,
              price:price,

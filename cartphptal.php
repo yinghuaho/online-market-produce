@@ -7,7 +7,7 @@
 
     // finally, create a new template object
     $template = new PHPTAL('cart.php');
-
+    $template->setOutputMode(PHPTAL::HTML5);
     // now add the variables for processing and that you created from above:
     $template->page_title = "Fresh 'n Healthy: Online Farmers' Market";
 

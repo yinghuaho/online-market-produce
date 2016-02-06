@@ -1,7 +1,6 @@
 <html>
   <headReplace metal:use-macro="header.php/meta_head">
   </headReplace>
-   <?php  include('productsJS.php'); ?>
 <body>
 
 <!-- ================================== NAVIGATION ================================== -->
@@ -116,7 +115,7 @@
     </footerReplace>
     
 <div class="top"><a href="#supertop"><span class="glyphicon glyphicon-triangle-top"></span></a></div>
-
+<?php  include('productsJS.php'); ?>
 
 
 </body>
