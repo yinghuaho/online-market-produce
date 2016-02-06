@@ -23,7 +23,6 @@ include('connection.php');
 		
 		//When page load, user ajax to retrieve on sale items from database
 		var loadingProducts = function(limit){
-			console.log(orderby);
 				$.ajax({
 					url: "controller.php",
 					dataType:"json",
@@ -37,7 +36,6 @@ include('connection.php');
 					},
 					type:"post",
 					success:function(result){
-					  console.log(result);
 		
 					  if(result[0].message == "success")
 					  {
