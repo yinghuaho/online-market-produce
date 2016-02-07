@@ -219,6 +219,11 @@ a[disabled] {
   width: 50%;
   font-size: 2em;
   margin-top: 30px; }
+  
+.btn-info[disabled], .btn-info[disabled]:hover {
+   background-color:#ADADAD;
+   border-color:#ADADAD;
+}
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 						FOOTER

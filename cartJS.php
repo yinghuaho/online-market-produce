@@ -2,11 +2,18 @@
 
    if (localStorage.getItem("shoppingCartItems") === null) {
      var shoppingCartItems = [];
+     if(shoppingCartItems.length == 0)
+     {
+        document.getElementById("done").disabled = true;
+     }
 
    }else{
       var retrievedData = localStorage.getItem("shoppingCartItems");
       var shoppingCartItems = JSON.parse(retrievedData);
-      console.log(shoppingCartItems);
+     if(shoppingCartItems.length == 0)
+     {
+        document.getElementById("done").disabled = true;
+     }
    }
    
    var app = angular.module('productRow', []);
@@ -30,6 +37,10 @@
          shoppingCartItems.splice(this.$index,1);
          localStorage["shoppingCartItems"] = JSON.stringify(shoppingCartItems);
          cartsLength.innerHTML = shoppingCartItems.length;
+         if(shoppingCartItems.length == 0)
+           {
+              document.getElementById("done").disabled = true;
+           }
       }
       
       $scope.total = function(x){
@@ -43,6 +54,7 @@
                setTimeout(function() {
                   var forTotal = document.getElementsByClassName('forTotal');
                   for (var i = 0; i < forTotal.length; ++i) {
+                      console.log(forTotal.length);
                       total += parseInt(forTotal[i].innerText);  
                   }     
                   document.getElementById('totals').innerText = "Total: " + total;      
@@ -54,7 +66,40 @@
    
    var checkout = document.getElementById("done");
    checkout.onclick = function (){
-      window.location.href="transaction.php";
+       var quantity = document.getElementsByClassName('quantity');
+       var forTotal = document.getElementsByClassName('forTotal'); 
+       var forPrice = document.getElementsByClassName('priceEach');      
+       var numb = document.getElementById('totals').innerText;
+       var items ="";
+       var total = numb.match(/\d/g);
+       total = total.join("");
+       for(var i = 0; i<shoppingCartItems.length; i++)
+       {
+          items += " < Name: " + shoppingCartItems[i].name + " - Quantity: " + quantity[i].value + " - Price For Each : " +  forPrice[i].innerText+ " - SubTotal: "+ forTotal[i].innerText +"  >  ";         
+       }
+console.log(items);
+        $.ajax({
+               url: "controller.php",
+               dataType:"json",
+               data:{
+                 method: "transactionComplete",
+                 total:total,
+                 items:items
+               },
+               type:"post",
+               success:function(result){
+                  console.log(result); 
+               },//success:function(result)	
+               error: function(jqXHR,textStatus, errorThrown) {
+                  console.log(jqXHR); 
+                  console.log(textStatus); 
+                  console.log(errorThrown); 
+               }
+       });//ajax	
+
+       window.location.href="transaction.php";
+
+      
    }
 
 </script>

@@ -54,4 +54,13 @@ include('class_lib.php');
 	 $result = $statement->fetchColumn();
 	 Print($result);
 }
+
+ if($_POST['method'] == "transactionComplete"){
+   $transaction = new database;
+   $insertValue = array("items" => $_POST['items'], "amounts" => $_POST['total']);
+   $transaction->set_lazy_insert($db,"transaction",$insertValue);
+   $transaction->lazy_insert();
+}
+
+
 ?>

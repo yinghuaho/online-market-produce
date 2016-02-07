@@ -42,14 +42,14 @@
         <div class="input-group-btn">
           <button class="btn btn-success"  ng-click="minus(x)">-</button>
         </div>
-        <input type="text" class="form-control text-center" ng-model="x.quantity"/>
+        <input type="text" class="form-control text-center quantity" ng-model="x.quantity"/>
         <div class="input-group-btn">
           <button class="btn btn-success" ng-click="x.quantity = parseInt(x.quantity)+1">+</button>
         </div>
       </div>
     </td>
 
-    <td class="text-center unit-price">{{x.price}}</td> <!-- UNIT PRICE -->
+    <td class="text-center unit-price priceEach">{{x.price}}</td> <!-- UNIT PRICE -->
     <td class="text-center forTotal" ng-init="x.subtotal =(x.price* x.quantity); shoppingCartItems.total = shoppingCartItems.total + (x.price* x.quantity)">{{total(x)}}</td> <!-- SUBTOTAL -->
     <td class="text-center"><button class="btn btn-danger" ng-click="remove()">Remove</button></td>
     </tr>
