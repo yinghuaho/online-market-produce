@@ -29,7 +29,7 @@
   </tr>
 
 <!-- -=-= ONE PRODUCT ROW =-=- -->
-  <tr ng-repeat="x in shoppingCartItems">
+  <tr ng-repeat="x in shoppingCartItems track by $index">
     <td> <!-- PRODUCT -->
       <div class="cart-card-thumbnail">
         <img src="{{x.imgurl}}"/>

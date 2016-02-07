@@ -38,6 +38,11 @@ function move() {
 
             complete.innerHTML = "Transaction complete!";
             message.appendChild(complete);
+            localStorage.clear();
+            setTimeout(function(){
+            window.location.href="index.php";
+            },1500);
+             
 
         } else {
             width++; 

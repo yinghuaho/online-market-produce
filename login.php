@@ -25,7 +25,6 @@
 
 <script>
 $(document).ready(function(){
-localStorage.clear();
 $("#errorMessage").hide();
 
 $("#login").click(function(){
