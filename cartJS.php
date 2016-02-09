@@ -44,7 +44,8 @@
       }
       
       $scope.total = function(x){
-         this.total_num = (x.price * x.quantity);
+         var total = (x.price * x.quantity);
+         this.total_num = total.toFixed(2);
          return (this.total_num);
       }
       
@@ -55,8 +56,9 @@
                   var forTotal = document.getElementsByClassName('forTotal');
                   for (var i = 0; i < forTotal.length; ++i) {
                       console.log(forTotal.length);
-                      total += parseInt(forTotal[i].innerText);  
+                      total += parseFloat(forTotal[i].innerText);  
                   }     
+                  total = total.toFixed(2);
                   document.getElementById('totals').innerText = "Total: " + total;      
               }, true);
            }, 500);
