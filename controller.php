@@ -3,17 +3,20 @@ include('class_lib.php');
  
  if($_POST['method'] == "Login"){
 	 $login = new database;
-	 $columns = array(f_name, l_name, secruitycode);
+	 $columns = array("f_name", "l_name", "secruitycode");
 	 //$where = array("username"=> "admin" ,"password" => "123");
 	 $where = array("username"=> $_POST['username'] ,"password" => $_POST['userpassword']);
 	 /*$orderBy = array();*/
-	 $login->set_lazy_select($db,"userinfo",$columns,$where,$orderBy);
+	 $orderBy = array();
+	 $wherestyle = "=";
+	 $limit = array(20);
+	 $login->set_lazy_select($db,"userinfo",$columns,$where,$orderBy,$limit,$wherestyle);
 	 $login->lazy_select();
 }
 
  if($_POST['method'] == "displayProducts"){
 	 $prdocuts = new database;
-	 $columns = array(id,product_name, product_description, price, amount, category, sale, dateupdated,image);
+	 $columns = array("id","product_name", "product_description", "price", "amount", "category", "sale", "dateupdated","image");
 	 //make variables post from html for category name
 	 /*$orderBy = array();*/
 	 if($_POST['limit'] == 0)
