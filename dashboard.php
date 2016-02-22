@@ -12,6 +12,8 @@
 
 <body>
 
+<!-- ================================== NAVIGATION ================================== -->
+
 <div class="container-fluid">
   <div class="col-xs-2">
     <div class="list-group">
@@ -26,14 +28,54 @@
     </div>
 
     <div class="list-group">
-      <a href="#" class="list-group-item">Back to Home</a>
+      <a href="index.php" class="list-group-item">Back to Home</a>
       <a href="#" class="list-group-item">Logout</a>
     </div>
   </div> <!-- column -->
 
+<!-- ================================== TABLE OF ITEMS ================================== -->
+
   <div class="col-xs-10">
     <div id="display">
-      HUAHUA HO HO HO HO H IKE UA O FOR SALE
+      
+    <table class="table table-hover table-bordered table-responsive">
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th class="unit-price">Unit Price</th>
+        <th>Subtotal</th>
+        <th></th>
+      </tr>
+
+      <!-- -=-= ONE PRODUCT ROW =-=- -->
+      <tr>
+       <td> <!-- PRODUCT -->
+          <div class="cart-card-thumbnail">
+            <img src="img_features/slider2.jpg" alt="veggies"/>
+          </div>
+          <h4 class="text-center">Onions</h4>
+        </td>
+
+        <td> <!-- QUANTITY -->
+          <div class="input-group cart-input-group text-center">
+            <div class="input-group-btn">
+              <button class="btn btn-success">-</button>
+            </div>
+            <input type="text" class="form-control text-center" value="1"/>
+            <div class="input-group-btn">
+              <button class="btn btn-success">+</button>
+            </div>
+          </div>
+        </td>
+
+        <td class="text-center unit-price">$8.99</td> <!-- UNIT PRICE -->
+        <td class="text-center">$8.99</td> <!-- SUBTOTAL -->
+        <td class="text-center"><button class="btn btn-danger">X</button></td>
+      </tr> 
+    <!-- -=-= END PRODUCT ROW =-=- -->
+
+    </table>
+
     </div>
   </div> <!-- column -->
 </div> <!-- container -->
