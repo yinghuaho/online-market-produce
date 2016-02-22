@@ -12,73 +12,230 @@
 
 <body>
 
-<!-- ================================== NAVIGATION ================================== -->
+<!-- ================================== NAVIGATION SIDEBAR ================================== -->
 
 <div class="container-fluid">
-  <div class="col-xs-2">
-    <div class="list-group">
-      <span class="list-group-item active">
-        Categories
-      </span>
-      <a href="#" class="list-group-item">Organic Fruits</a>
-      <a href="#" class="list-group-item">Organic Vegetables</a>
-      <a href="#" class="list-group-item">Dairy</a>
-      <a href="#" class="list-group-item">Meats</a>
-      <a href="#" class="list-group-item">Other</a>
-    </div>
 
-    <div class="list-group">
-      <a href="index.php" class="list-group-item">Back to Home</a>
-      <a href="#" class="list-group-item">Logout</a>
-    </div>
-  </div> <!-- column -->
+  <div class="hamburger">
+    <a href="#">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>    
+      <span class="burger-line"></span>
+    </a>
+  </div>
+
+  <div id="dashboard-nav" style="padding-top:50px;">
+
+  <div class="hamburger">
+    <a href="#">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>    
+      <span class="burger-line"></span>
+    </a>
+  </div>
+
+    <div id="dashboard-nav-col" class="col-xs-2">
+      <div class="list-group">
+        <span class="list-group-item active">
+          Categories
+        </span>
+        <a href="#" class="list-group-item">Organic Fruits</a>
+        <a href="#" class="list-group-item">Organic Vegetables</a>
+        <a href="#" class="list-group-item">Dairy</a>
+        <a href="#" class="list-group-item">Meats</a>
+        <a href="#" class="list-group-item">Other</a>
+      </div>
+
+      <div class="list-group">
+        <a href="index.php" class="list-group-item">Back to Home</a>
+        <a href="#" class="list-group-item">Logout</a>
+      </div>
+    </div> <!-- column -->
+  </div> <!-- dashboard-nav -->
 
 <!-- ================================== TABLE OF ITEMS ================================== -->
 
-  <div class="col-xs-10">
+  <div class="col-xs-12">
     <div id="display">
-      
-    <table class="table table-hover table-bordered table-responsive">
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th class="unit-price">Unit Price</th>
-        <th>Subtotal</th>
-        <th></th>
-      </tr>
 
-      <!-- -=-= ONE PRODUCT ROW =-=- -->
-      <tr>
-       <td> <!-- PRODUCT -->
-          <div class="cart-card-thumbnail">
+<!-- =================================== FIRST ROW STARTS HERE =================================== -->
+
+      <div class="col-md-3 col-sm-6">
+        <div class="card"> <div class="card-thumbnail">
             <img src="img_features/slider2.jpg" alt="veggies"/>
           </div>
-          <h4 class="text-center">Onions</h4>
-        </td>
+          <!-- thumbnail -->
+          
+          <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
+          <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$8.99"/> </h4>
+          <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
 
-        <td> <!-- QUANTITY -->
-          <div class="input-group cart-input-group text-center">
-            <div class="input-group-btn">
-              <button class="btn btn-success">-</button>
-            </div>
-            <input type="text" class="form-control text-center" value="1"/>
-            <div class="input-group-btn">
-              <button class="btn btn-success">+</button>
-            </div>
+          <div class="col-md-8 col-md-offset-2">
+            <!-- <strong class="card-qty">QTY.</strong> -->
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button class="btn btn-success">-</button>
+                </div>
+
+                <input type="text" class="form-control text-center" value="1"/>
+
+                <div class="input-group-btn">
+                  <button class="btn btn-success">+</button>
+                </div>
+              </div>
+          </div>  <!-- COL MD 6 -->
+
+          <div class="clearfix"></div>
+
+          <button class="btn btn-danger btn-block" style="margin-top: 15px;">Remove</button>
+        </div> <!-- CARD -->
+      </div>  <!-- COL MD 3 -->
+
+
+      <div class="col-md-3 col-sm-6">
+        <div class="card"> <div class="card-thumbnail">
+            <img src="img_features/slider2.jpg" alt="veggies"/>
           </div>
-        </td>
+          <!-- thumbnail -->
+          
+          <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
+          <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$8.99"/> </h4>
+          <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
 
-        <td class="text-center unit-price">$8.99</td> <!-- UNIT PRICE -->
-        <td class="text-center">$8.99</td> <!-- SUBTOTAL -->
-        <td class="text-center"><button class="btn btn-danger">X</button></td>
-      </tr> 
-    <!-- -=-= END PRODUCT ROW =-=- -->
+          <div class="col-md-8 col-md-offset-2">
+            <!-- <strong class="card-qty">QTY.</strong> -->
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button class="btn btn-success">-</button>
+                </div>
 
-    </table>
+                <input type="text" class="form-control text-center" value="1"/>
 
-    </div>
+                <div class="input-group-btn">
+                  <button class="btn btn-success">+</button>
+                </div>
+              </div>
+          </div>  <!-- COL MD 6 -->
+
+          <div class="clearfix"></div>
+
+          <button class="btn btn-danger btn-block" style="margin-top: 15px;">Remove</button>
+        </div> <!-- CARD -->
+      </div>  <!-- COL MD 3 -->
+
+
+      <div class="col-md-3 col-sm-6">
+        <div class="card"> <div class="card-thumbnail">
+            <img src="img_features/slider2.jpg" alt="veggies"/>
+          </div>
+          <!-- thumbnail -->
+          
+          <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
+          <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$8.99"/> </h4>
+          <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
+
+          <div class="col-md-8 col-md-offset-2">
+            <!-- <strong class="card-qty">QTY.</strong> -->
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button class="btn btn-success">-</button>
+                </div>
+
+                <input type="text" class="form-control text-center" value="1"/>
+
+                <div class="input-group-btn">
+                  <button class="btn btn-success">+</button>
+                </div>
+              </div>
+          </div>  <!-- COL MD 6 -->
+
+          <div class="clearfix"></div>
+
+          <button class="btn btn-danger btn-block" style="margin-top: 15px;">Remove</button>
+        </div> <!-- CARD -->
+      </div>  <!-- COL MD 3 -->
+
+
+      <div class="col-md-3 col-sm-6">
+        <div class="card"> <div class="card-thumbnail">
+            <img src="img_features/slider2.jpg" alt="veggies"/>
+          </div>
+          <!-- thumbnail -->
+          
+          <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
+          <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$8.99"/> </h4>
+          <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
+
+          <div class="col-md-8 col-md-offset-2">
+            <!-- <strong class="card-qty">QTY.</strong> -->
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button class="btn btn-success">-</button>
+                </div>
+
+                <input type="text" class="form-control text-center" value="1"/>
+
+                <div class="input-group-btn">
+                  <button class="btn btn-success">+</button>
+                </div>
+              </div>
+          </div>  <!-- COL MD 6 -->
+
+          <div class="clearfix"></div>
+
+          <button class="btn btn-danger btn-block" style="margin-top: 15px;">Remove</button>
+        </div> <!-- CARD -->
+      </div>  <!-- COL MD 3 -->
+<!-- =================================== FIRST ROW ENDS HERE =================================== -->
+
+
+
+<!-- =================================== SECOND ROW STARTS HERE =================================== -->
+
+
+
+<!-- =================================== SECOND ROW ENDS HERE =================================== -->
+
+<!-- ========== Update Button ========== -->
+<div class="col-md-12 text-left">
+  <button id="done" class="btn btn-success">UPDATE</button>
+</div>
+
+    </div> <!-- display -->
   </div> <!-- column -->
 </div> <!-- container -->
+
+
+
+<!-- ========== Putting this here for now ========== -->
+<script>
+$(document).ready(function(){
+
+  var showMenu = false,
+      menuSlideIn = {"left": "0px", "easing": "swing"},
+      menuSlideOut = {"left": "-60%", "easing": "swing"};
+
+  $(".hamburger").click(function(){
+    if(!showMenu) {
+      showMenu = true;
+      $("#dashboard-nav").animate(menuSlideIn, 300);
+      $('#dashboard-nav-col').removeClass('col-xs-2');
+    } else {
+      showMenu = false;
+      $("#dashboard-nav").animate(menuSlideOut, 300);
+    }
+  });
+
+  // $('.hamburger').click(function() {
+  //   $('#dashboard-nav').toggleClass('burger-slide');
+  //   $('#dashboard-nav').removeClass('col-xs-2');
+  // });
+
+}); // document ready
+
+</script>
+
+
 
 </body>
 </html>
