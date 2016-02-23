@@ -205,16 +205,6 @@ a[disabled] {
   .unit-price {
     display: none; } }
 
-.btn-warning {
-  background-color: #FFD059;
-  color: #4D4D4D;
-  width: 50%;
-  font-size: 1.6em; }
-  .btn-warning:hover, .btn-warning:active, .btn-warning:focus {
-    background-color: #ffde8c !important;
-    color: #4D4D4D;
-    border-color: #FFD059; }
-
 .btn-info {
   width: 50%;
   font-size: 2em;
@@ -265,6 +255,35 @@ a[disabled] {
   .list-group-item.active:focus, .list-group-item.active:hover {
     background-color: #486834;
     border-color: #77ab57; }
+
+.btn-dash-cards {
+  background-color: #FFD059;
+  border-color: #ffde8c;
+  color: #4D4D4D; }
+  .btn-dash-cards:hover, .btn-dash-cards:active, .btn-dash-cards:focus {
+    background-color: #ffde8c !important;
+    border-color: #FFD059;
+    color: #4D4D4D !important; }
+
+.btn-dash-update {
+  background-color: #46b8da;
+  color: #F2F2F2;
+  width: 100%;
+  font-size: 1.8em;
+  margin-top: 30px; }
+  .btn-dash-update:hover, .btn-dash-update:active, .btn-dash-update:focus {
+    background-color: #75D4F1;
+    color: #F2F2F2; }
+
+.btn-dash-add {
+  background-color: #77ab57;
+  color: #F2F2F2;
+  width: 100%;
+  font-size: 1.8em;
+  margin-top: 30px; }
+  .btn-dash-add:hover, .btn-dash-add:active, .btn-dash-add:focus {
+    background-color: #B2C965;
+    color: #F2F2F2; }
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 						FOOTER

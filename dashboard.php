@@ -66,6 +66,8 @@
           </div>
           <!-- thumbnail -->
           
+          <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="slider2.jpg"/> </h4>
+          <button class="btn btn-dash-cards btn-block">Upload Image</button>
           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
           <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$8.99"/> </h4>
           <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
@@ -87,7 +89,22 @@
 
           <div class="clearfix"></div>
 
-          <button class="btn btn-danger btn-block" style="margin-top: 15px;">Remove</button>
+          <button class="btn btn-dash-cards btn-block" data-toggle="modal" data-target="#myModal" style="margin-top: 15px;">Remove</button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Are you sure you want to remove Organic Apples?</h4>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- modal -->
         </div> <!-- CARD -->
       </div>  <!-- COL MD 3 -->
 
@@ -98,6 +115,8 @@
           </div>
           <!-- thumbnail -->
           
+          <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="slider2.jpg"/> </h4>
+          <button class="btn btn-dash-cards btn-block">Upload Image</button>
           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
           <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$8.99"/> </h4>
           <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
@@ -119,7 +138,22 @@
 
           <div class="clearfix"></div>
 
-          <button class="btn btn-danger btn-block" style="margin-top: 15px;">Remove</button>
+          <button class="btn btn-dash-cards btn-block" data-toggle="modal" data-target="#myModal" style="margin-top: 15px;">Remove</button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Are you sure you want to remove Organic Apples?</h4>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- modal -->
         </div> <!-- CARD -->
       </div>  <!-- COL MD 3 -->
 
@@ -130,6 +164,8 @@
           </div>
           <!-- thumbnail -->
           
+          <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="slider2.jpg"/> </h4>
+          <button class="btn btn-dash-cards btn-block">Upload Image</button>
           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
           <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$8.99"/> </h4>
           <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
@@ -151,7 +187,22 @@
 
           <div class="clearfix"></div>
 
-          <button class="btn btn-danger btn-block" style="margin-top: 15px;">Remove</button>
+          <button class="btn btn-dash-cards btn-block" data-toggle="modal" data-target="#myModal" style="margin-top: 15px;">Remove</button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Are you sure you want to remove Organic Apples?</h4>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- modal -->
         </div> <!-- CARD -->
       </div>  <!-- COL MD 3 -->
 
@@ -162,6 +213,8 @@
           </div>
           <!-- thumbnail -->
           
+          <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="slider2.jpg"/> </h4>
+          <button class="btn btn-dash-cards btn-block">Upload Image</button>
           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
           <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$8.99"/> </h4>
           <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
@@ -183,7 +236,22 @@
 
           <div class="clearfix"></div>
 
-          <button class="btn btn-danger btn-block" style="margin-top: 15px;">Remove</button>
+          <button class="btn btn-dash-cards btn-block" data-toggle="modal" data-target="#myModal" style="margin-top: 15px;">Remove</button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Are you sure you want to remove Organic Apples?</h4>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- modal -->
         </div> <!-- CARD -->
       </div>  <!-- COL MD 3 -->
 <!-- =================================== FIRST ROW ENDS HERE =================================== -->
@@ -197,8 +265,13 @@
 <!-- =================================== SECOND ROW ENDS HERE =================================== -->
 
 <!-- ========== Update Button ========== -->
-<div class="col-md-12 text-left">
-  <button id="done" class="btn btn-success">UPDATE</button>
+<div class="col-sm-12">
+  <div class="col-sm-6 text-center">
+    <button id="done" class="btn btn-dash-update">UPDATE</button>
+  </div>
+  <div class="col-sm-6 text-center">
+    <button id="done" class="btn btn-dash-add">ADD PRODUCT</button>
+  </div>
 </div>
 
     </div> <!-- display -->

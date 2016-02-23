@@ -196,10 +196,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-
 .bg-warning {
-	background-color: $yellow;
-	padding-top: 10px;
+  background-color: $yellow;
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
@@ -315,17 +314,17 @@ a[disabled]{
   }
 }
 
-.btn-warning {
-  background-color: $yellow;
-  color: $darkgray;
-  width: 50%;
-  font-size: 1.6em;
-  &:hover, &:active, &:focus {
-    background-color: $lightenyellow !important;
-    color: $darkgray;
-    border-color: $yellow;
-  }
-}
+// .btn-warning {
+//   background-color: $yellow;
+//   color: $darkgray;
+//   width: 50%;
+//   font-size: 1.6em;
+//   &:hover, &:active, &:focus {
+//     background-color: $lightenyellow !important;
+//     color: $darkgray;
+//     border-color: $yellow;
+//   }
+// }
 
 .btn-info {
   width: 50%;
@@ -400,6 +399,41 @@ a[disabled]{
   &:focus, &:hover {
     background-color: $darkgreen;
     border-color: $lightengreen;
+  }
+}
+
+.btn-dash-cards {
+  background-color: $yellow;
+  border-color: $lightenyellow;
+  color: $darkgray;
+  &:hover, &:active, &:focus {
+    background-color: $lightenyellow !important;
+    border-color: $yellow;
+    color: $darkgray !important;
+  }
+}
+
+.btn-dash-update {
+  background-color: #46b8da;
+  color: $lightgray;
+  width: 100%;
+  font-size: 1.8em;
+  margin-top: 30px;
+  &:hover, &:active, &:focus {
+    background-color: #75D4F1;
+    color: $lightgray;
+  }
+}
+
+.btn-dash-add {
+  background-color: $lightengreen;
+  color: $lightgray;
+  width: 100%;
+  font-size: 1.8em;
+  margin-top: 30px;
+  &:hover, &:active, &:focus {
+    background-color: $lightgreen;
+    color: $lightgray;
   }
 }
 
