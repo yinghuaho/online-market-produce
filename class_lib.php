@@ -2,7 +2,7 @@
 include('connection.php');
 
  class database
- {	 	 
+ {
 	 private $db;
 	 private $tablename = "tablename";
 	 private $columns = "columns";
@@ -12,8 +12,8 @@ include('connection.php');
 	 private $limit ="";
 	 private $updateValue = "";
 	 private $insertValue = "";
-	 
-	 
+
+
 	 public function set_lazy_select($db,$tablename,$columns,$where,$orderBy,$limit,$wherestyle) //set varaibles for lazy_select() function
 	 {
 		 $this->db = $db;
@@ -24,8 +24,8 @@ include('connection.php');
 		 $this->limit = $limit;
 		 $this->wherestyle = $wherestyle;
 	 }
-	 
-	 public function lazy_select() //function supports all kind of database select function 
+
+	 public function lazy_select() //function supports all kind of database select function
 	 {
 		 $db = $this->db;
 		 $tablename = $this->tablename;
@@ -36,7 +36,7 @@ include('connection.php');
 		 $wherestyle = $this->wherestyle;
 		 $querey ="SELECT ";
 		 $arrlength = count($columns);
-		 
+
 		 if($arrlength == 0 )
 		 {
 			$querey ="SELECT * ";
@@ -52,7 +52,7 @@ include('connection.php');
 					 $querey = $querey . ", ";
 				 }
 			 }
-		 } 		 
+		 }
 		 $querey = $querey . "FROM ". $tablename;
 		 $arrlengthWhere = count($where);
 		 $lengthwherestyle = count($wherestyle);
@@ -60,11 +60,11 @@ include('connection.php');
 		 $lengthLimit = count($limit);
 		 if($arrlengthWhere == 0 )
 		 {
-			 
+
 			 if($arrlengthOrderBy != 0)
 				 {
 					$querey = $querey . " ORDER BY  ";
-					 
+
 					$oderByCount = 0;
 					for($c = 0; $c <$arrlengthOrderBy; $c++)
 					{
@@ -74,10 +74,10 @@ include('connection.php');
 						 {
 							 $querey = $querey . ", ";
 						 }
-					} 
+					}
 				 }
-				 
-				 
+
+
 			if($lengthLimit!= 0)
 			 {
 				 $querey = $querey . " LIMIT ";
@@ -92,8 +92,8 @@ include('connection.php');
 					 }
 				 }
 			 }
-			 
-			 
+
+
 			 $statement = $db->prepare($querey);
 			 $statement->execute();
 			 $arr = $statement->errorInfo();
@@ -101,14 +101,14 @@ include('connection.php');
 			 {
 		     print_r("database handling error".$arr);
 			 }*/
-			 
+
 		 }else
 		 {
-			 $querey = $querey . " WHERE "; 
+			 $querey = $querey . " WHERE ";
 			 $whereCount = 0;
 			 foreach($where as $i => $i_value) {
 				$whereCount++;
-				
+
 				if($lengthwherestyle != 0)
 				{
 					$querey = $querey . " " . $i . " ". $wherestyle ." " . ":" . $i. " ";
@@ -116,20 +116,20 @@ include('connection.php');
 				{
 					$querey = $querey . " " . $i . " = " . ":" . $i. " ";
 				}
-				
+
 				if($whereCount >= 1 && $whereCount < $arrlengthWhere)
 				{
 					$querey = $querey . " AND ";
-				}	
+				}
 			 }
-			 $executeArray = array(); 
+			 $executeArray = array();
 			 foreach($where as $z => $z_value) {
 				$executeArray[":".$z.""] = "".$z_value."";
 			 }
-			 
+
 			 if($arrlengthOrderBy != 0)
 			 {
-				$querey = $querey . " ORDER BY  ";		 
+				$querey = $querey . " ORDER BY  ";
 				$oderByCount = 0;
 				for($c = 0; $c <$arrlengthOrderBy; $c++)
 				{
@@ -139,9 +139,9 @@ include('connection.php');
 					 {
 						 $querey = $querey . ", ";
 					 }
-				} 
-			 }		 
-			 
+				}
+			 }
+
 			 if($lengthLimit!= 0)
 			 {
 				 $querey = $querey . " LIMIT ";
@@ -159,7 +159,7 @@ include('connection.php');
 			 $statement = $db->prepare($querey);
 			 $statement->execute($executeArray);
 			 $arr = $statement->errorInfo();
-		 }	
+		 }
 		 $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 		 $count = $statement->rowCount();
 		 $result = array();
@@ -170,7 +170,7 @@ include('connection.php');
 			foreach($rows as $row){
 				foreach($row as $key => $value)
 				{
-					$result_success[$key] = $value;				
+					$result_success[$key] = $value;
 				}
 				$result_success["message"] = "success";
 				array_push($result,$result_success);
@@ -182,11 +182,11 @@ include('connection.php');
 			/*if($arr)
 			 { //to detect what sql code is wrong
 			 print_r("database handling error".$arr);
-			 }	*/	 
-		 } 
+			 }	*/
+		 }
 		 echo json_encode($result);
 	 }
- 
+
 /* $test = new database;
  //$columns = array(f_name, l_name, secruitycode);
  $columns = array();
@@ -196,7 +196,7 @@ include('connection.php');
  $orderBy = array(id); //("column_name DESC or ASC or leave it blank")
  $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy,$limit);
  $test->lazy_select();
- 
+
   $test = new database;
  //$columns = array(f_name, l_name, secruitycode);
  $columns = array();
@@ -205,23 +205,23 @@ include('connection.php');
  $orderBy = array(id); //("column_name DESC or ASC or leave it blank")
  $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy,$limit);
  $test->lazy_select();
-*/ 
+*/
 
 
 
-/* 
+/*
   Class Rule
-  - $db is from connection.php as pdo function	
+  - $db is from connection.php as pdo function
   - set_lazy_select ($db, $tablename, $columns, $where);
   - If you want to select all the columns from your database, create an empty array for $columns
   - If you don't want to have any "where statment", create an empty array for $where
-  
+
   - $columns = array(f_name, l_name, secruitycode);  array(column1,column2,column3,...);
   - $where = array("username"=> "admin","password" =>"123"); array( column_name => value);
   - $orderBy = array(id);  array("column_name DESC or ASC or leave it blank")
-  - $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy);   
+  - $test->set_lazy_select($db,"userinfo",$columns,$where,$orderBy);
    //set_lazy_select($db,$tablename,$columns,$where,$orderBy)
-  - $test->lazy_select();  
+  - $test->lazy_select();
 */
 
 	 public function set_lazy_insert($db,$tablename,$insertValue) //set varaibles for lazy_insert() function
@@ -230,7 +230,7 @@ include('connection.php');
 		 $this->tablename = $tablename;
 		 $this->insertValue = $insertValue;
 	 }
-	 
+
 	 public function lazy_insert()//insert function nfor all database input
 	 {
 		 $db = $this->db;
@@ -249,7 +249,7 @@ include('connection.php');
 				 $querey = $querey . ",";
 			 }
 		 }
-		 $querey = $querey . ") VALUES (";		 
+		 $querey = $querey . ") VALUES (";
 		 $whereCountValue = 0;
 		 foreach($insertValue as $z => $z_value )
 		 {
@@ -261,7 +261,7 @@ include('connection.php');
 			 }
 		 }
 		 $querey = $querey . ")";
-		 $executeArray = array(); 
+		 $executeArray = array();
 			 foreach($insertValue as $z => $z_value) {
 				$executeArray[":".$z.""] = "".$z_value."";
 			 }
@@ -270,7 +270,7 @@ include('connection.php');
 		 if ($statement->execute($executeArray))
 		 {
 			$result_success = array("message" => "success");
-			array_push($result,$result_success);		 
+			array_push($result,$result_success);
 		 } else
 		 {
 			 $arr = $statement->errorInfo();
@@ -282,14 +282,14 @@ include('connection.php');
    $insertValue = array("username" => "Admin_2", "password" => "123456", "f_name" => "asdasd", "l_name" => "asdcad", "email" => "123456@", "usertype" => "admintest", "secruitycode" => "1234asdadsd56");
    $test->set_lazy_insert($db,"userinfo",$insertValue);
    $test->lazy_insert();*/
-   
+
    	 public function set_lazy_delete($db,$tablename,$where) //set varaibles for lazy_insert() function
 	 {
 		 $this->db = $db;
 		 $this->tablename = $tablename;
 		 $this->where = $where;
 	 }
-	 
+
 	 public function lazy_delete()
 	 {
 		 $db = $this->db;
@@ -308,32 +308,32 @@ include('connection.php');
 				 $querey = $querey . " AND ";
 			 }
 		 }
-		 
-		 $executeArray = array(); 
+
+		 $executeArray = array();
 			 foreach($where as $z => $z_value) {
 				$executeArray[":".$z.""] = "".$z_value."";
 		  }
-		  
+
 		 $statement = $db->prepare($querey);
 		 $result = array();
 		 if ($statement->execute($executeArray))
 		 {
 			$result_success = array("message" => "success");
-			array_push($result,$result_success);		 
+			array_push($result,$result_success);
 		 } else
 		 {
 			 $arr = $statement->errorInfo();
 			 array_push($result,$arr);
-		 }	 
-		 echo json_encode($result); 
+		 }
+		 echo json_encode($result);
 	 }
- 
+
 /*  $test = new database;
   $where = array("username"=> "admin","password" =>"123");
   $test->set_lazy_delete($db,"userinfo",$where);
   $test->lazy_delete();*/
-  
-  
+
+
      public function set_lazy_update($db,$tablename,$updateValue,$where) //set varaibles for lazy_update() function
 	 {
 		 $this->db = $db;
@@ -341,17 +341,76 @@ include('connection.php');
 		 $this->updateValue = $updateValue;
 		 $this->where = $where;
 	 }
-	 
+
 	 public function lazy_update()
 	 {
 		 $db = $this->db;
 		 $tablename = $this->tablename;
 		 $updateValue = $this->updateValue;
-		 $where = $this->where; 
-		 
-	 }
-  
-}
-   
-?>
+		 $where = $this->where;
+     $querey = "UPDATE ".$tablename." SET ";
+     $arrLength = count($updateValue);
+     $updateCount = 0;
+     foreach($updateValue as $i => $i_value )
+		 {
 
+      //  $sql = "UPDATE movies SET filmName = :filmName,
+      //              filmDescription = :filmDescription,
+      //              filmImage = :filmImage,
+      //              filmPrice = :filmPrice,
+      //              filmReview = :filmReview
+      //              WHERE filmID = :filmID";
+       $updateCount += 1;
+       $querey = $querey . " " . $i . "= :" .$i;
+       if($updateCount>= 1 && $updateCount < $arrLength)
+       {
+         $querey = $querey . ",";
+       }
+		 }
+
+
+       $querey = $querey . " WHERE ";
+			 $whereCount = 0;
+			 foreach($where as $i => $i_value) {
+         $whereCount++;
+         $querey = $querey . " " . $i . " = " . "" . $i_value. " ";
+        if($whereCount >= 1 && $whereCount < $arrlengthWhere)
+				{
+					$querey = $querey . " AND ";
+				}
+
+      }
+
+		 $executeArray = array();
+		 foreach($updateValue as $z => $z_value) {
+				$executeArray[":".$z.""] = "".$z_value."";
+		 }
+
+
+     $statement = $db->prepare($querey);
+		 $result = array();
+		 if ($statement->execute($executeArray))
+		 {
+			$result_success = array("message" => "success");
+			array_push($result,$result_success);
+      echo "Success";
+		 } else
+		 {
+			 $arr = $statement->errorInfo();
+			 array_push($result,$arr);
+		 }
+		 echo json_encode($result);
+
+
+	 }
+
+}
+
+
+  //  $test = new database;
+  //  $updateValue = array("username" => "Changed", "password" => "123456");
+  //  $where = array("id"=> "16");
+  //  $test->set_lazy_update($db,"userinfo",$updateValue,$where);
+  //  $test->lazy_update();
+
+?>
