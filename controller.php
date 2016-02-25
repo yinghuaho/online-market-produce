@@ -1,9 +1,9 @@
 <?php
-include('class_lib.php'); 
- 
+include('class_lib.php');
+
  if($_POST['method'] == "Login"){
 	 $login = new database;
-	 $columns = array("f_name", "l_name", "secruitycode");
+	 $columns = array("id","f_name", "l_name", "secruitycode");
 	 //$where = array("username"=> "admin" ,"password" => "123");
 	 $where = array("username"=> $_POST['username'] ,"password" => $_POST['userpassword']);
 	 /*$orderBy = array();*/
@@ -23,23 +23,23 @@ include('class_lib.php');
 	 {
 		$limit = array(20);
 	 }else{
-		$limit = array(20,$_POST['limit']); 
+		$limit = array(20,$_POST['limit']);
 	 }
-	 
+
 	 if($_POST['where'] == "")
 	 {
 		 $where = array();
 	 }else{
 		 $where = array($_POST['wherename']=>$_POST['where']);
 	 }
-	 
+
 	 if($_POST['orderby'] == "")
 	 {
 		 $orderBy = array();
 	 }else{
 		 $orderBy = array($_POST['orderby']);
 	 }
-	 
+
 	 if($_POST['wherestyle'] == "")
 	 {
 		 $wherestyle = "=";

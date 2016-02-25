@@ -1,4 +1,4 @@
-<html> 
+<html>
   <head>
     <title>Fresh 'n Healthy: Dashboard</title>
     <meta charset="utf-8"/>
@@ -9,7 +9,17 @@
     <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
   </head>
 
+  <script>
+    if(sessionStorage.getItem('userid')){
+      var userid = sessionStorage.getItem('userid');
+      var username = sessionStorage.getItem('f_name');
+      var secruitycode =  sessionStorage.getItem('secruitycode');
+    }
+    else {
+      window.location = "login.php";
+    }
 
+  </script>
 <body>
 
 <!-- ================================== NAVIGATION SIDEBAR ================================== -->
@@ -19,7 +29,7 @@
   <div class="hamburger">
     <a href="#">
       <span class="burger-line"></span>
-      <span class="burger-line"></span>    
+      <span class="burger-line"></span>
       <span class="burger-line"></span>
     </a>
   </div>
@@ -29,7 +39,7 @@
   <div class="hamburger">
     <a href="#">
       <span class="burger-line"></span>
-      <span class="burger-line"></span>    
+      <span class="burger-line"></span>
       <span class="burger-line"></span>
     </a>
   </div>
@@ -65,7 +75,7 @@
             <img src="img_features/slider2.jpg" alt="veggies"/>
           </div>
           <!-- thumbnail -->
-          
+
           <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="slider2.jpg"/> </h4>
           <button class="btn btn-dash-cards btn-block">Upload Image</button>
           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
@@ -114,7 +124,7 @@
             <img src="img_features/slider2.jpg" alt="veggies"/>
           </div>
           <!-- thumbnail -->
-          
+
           <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="slider2.jpg"/> </h4>
           <button class="btn btn-dash-cards btn-block">Upload Image</button>
           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
@@ -163,7 +173,7 @@
             <img src="img_features/slider2.jpg" alt="veggies"/>
           </div>
           <!-- thumbnail -->
-          
+
           <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="slider2.jpg"/> </h4>
           <button class="btn btn-dash-cards btn-block">Upload Image</button>
           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
@@ -212,7 +222,7 @@
             <img src="img_features/slider2.jpg" alt="veggies"/>
           </div>
           <!-- thumbnail -->
-          
+
           <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="slider2.jpg"/> </h4>
           <button class="btn btn-dash-cards btn-block">Upload Image</button>
           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
