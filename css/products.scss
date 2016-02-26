@@ -185,7 +185,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .selectedPage{
-   background:#B2C965;  
+   background:#B2C965;
 }
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -437,6 +437,26 @@ a[disabled]{
   }
 }
 
+//Might Break Everything
+// .inputfile {
+// 	width: 0.1px;
+// 	height: 0.1px;
+// 	opacity: 0;
+// 	overflow: hidden;
+// 	position: absolute;
+// 	z-index: -1;
+//   & + label{
+//     background-color: $yellow;
+//     border-color: $lightenyellow;
+//     color: $darkgray;
+//   }
+//   &:focus + label, & + label:hover{
+//     background-color: $lightenyellow !important;
+//     border-color: $yellow;
+//     color: $darkgray !important;
+//   }
+// }
+
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 						FOOTER
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
@@ -494,9 +514,3 @@ footer {
 	bottom: 15px;
 	font-size: 2em;
 }
-
-
-
-
-
-
