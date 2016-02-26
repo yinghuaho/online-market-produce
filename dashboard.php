@@ -1,4 +1,4 @@
-<html>
+<html ng-app="dashboard">
   <head>
     <title>Fresh 'n Healthy: Dashboard</title>
     <meta charset="utf-8"/>
@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/products.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/js/angular.min.js"></script>
   </head>
 
   <script>
@@ -20,7 +21,7 @@
     }
 
   </script>
-<body>
+<body ng-controller ="dashboardController">
 
 <!-- ================================== NAVIGATION SIDEBAR ================================== -->
 
@@ -172,8 +173,7 @@ $(document).ready(function(){
 }); // document ready
 
 </script>
-
-
+<script type="text/javascript" src="dashboard.js"></script>
 
 </body>
 </html>
