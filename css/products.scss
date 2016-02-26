@@ -438,24 +438,35 @@ a[disabled]{
 }
 
 //Might Break Everything
-// .inputfile {
-// 	width: 0.1px;
-// 	height: 0.1px;
-// 	opacity: 0;
-// 	overflow: hidden;
-// 	position: absolute;
-// 	z-index: -1;
-//   & + label{
-//     background-color: $yellow;
-//     border-color: $lightenyellow;
-//     color: $darkgray;
-//   }
-//   &:focus + label, & + label:hover{
-//     background-color: $lightenyellow !important;
-//     border-color: $yellow;
-//     color: $darkgray !important;
-//   }
-// }
+.custom-file-input {
+  color: transparent;
+  outline:none;
+  &::-webkit-file-upload-button{
+    visibility: hidden;
+  }
+  &::before{
+    content: 'Upload a new picture';
+    display: inline-block;
+    background-color: $yellow;
+    border-color: $lightenyellow;
+    color: $darkgray;
+    border-radius: 3px;
+    padding: 6px 12px;
+    outline: none;
+    width:100%;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-size: 10pt;
+  }
+  &:hover::before{
+    background-color: $lightenyellow !important;
+    border-color: $yellow;
+    color: $darkgray !important;
+  }
+}
+
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 						FOOTER

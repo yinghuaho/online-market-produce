@@ -77,8 +77,7 @@
           <!-- thumbnail -->
 
           <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="slider2.jpg"/> </h4>
-          <input type="file" name="file" id="file" class="inputfile" />
-          <label class="btn btn-dash-cards btn-block">Upload Image</label>
+          <input type="file" name="file" id="file" class="custom-file-input" style="width:100%"/>
           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
           <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$8.99"/> </h4>
           <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
