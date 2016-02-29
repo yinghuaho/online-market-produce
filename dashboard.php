@@ -10,7 +10,7 @@
     <script type="text/javascript" src="lib/js/angular.min.js"></script>
   </head>
 
-  <script>
+  <!-- <script>
     if(sessionStorage.getItem('userid')){
       var userid = sessionStorage.getItem('userid');
       var username = sessionStorage.getItem('f_name');
@@ -20,7 +20,7 @@
       window.location = "login.php";
     }
 
-  </script>
+  </script> -->
 <body ng-controller ="dashboardController">
 
 <!-- ================================== NAVIGATION SIDEBAR ================================== -->
@@ -71,35 +71,35 @@
 
 <!-- =================================== FIRST ROW STARTS HERE =================================== -->
 
-      <div class="col-md-3 col-sm-6">
+      <div ng-repeat = "product in products | limitTo:20:0" class="col-md-3 col-sm-6">
         <div class="card"> <div class="card-thumbnail">
-            <img src="img_features/slider2.jpg" alt="veggies"/>
+            <img ng-src="{{product.img}}" alt="veggies"/>
           </div>
           <!-- thumbnail -->
 
-          <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="slider2.jpg"/> </h4>
-          <input type="file" name="file" id="file" class="custom-file-input" style="width:100%"/>
-          <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Organic Apples"/> </h4>
-          <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$8.99"/> </h4>
-          <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
+          <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="{{product.url}}"/> </h4>
+          <!-- <input type="file" name="file" id="file" class="custom-file-input" style="width:100%"/> -->
+          <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="{{product.name}}"/> </h4>
+          <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="${{product.price}}"/> </h4>
+          <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="{{product.description}}"/> </h4>
 
           <div class="col-md-8 col-md-offset-2">
             <!-- <strong class="card-qty">QTY.</strong> -->
               <div class="input-group">
                 <div class="input-group-btn">
-                  <button class="btn btn-success">-</button>
+                  <button class="btn btn-success" ng-click='minus($index)'>-</button>
                 </div>
 
-                <input type="text" class="form-control text-center" value="1"/>
+                <input type="number" class="form-control text-center" value="{{product.quanity}}"/>
 
                 <div class="input-group-btn">
-                  <button class="btn btn-success">+</button>
+                  <button class="btn btn-success" ng-click='add($index)'>+</button>
                 </div>
               </div>
           </div>  <!-- COL MD 6 -->
 
           <div class="clearfix"></div>
-
+          <button id="done" class="btn btn-dash-update">UPDATE</button>
           <button class="btn btn-dash-cards btn-block" data-toggle="modal" data-target="#myModal" style="margin-top: 15px;">Remove</button>
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -111,7 +111,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Remove</button>
+                    <button type="button" class="btn btn-primary" ng-click='removeProduct($index)'>Remove</button>
                   </div>
                 </div>
               </div>
@@ -132,9 +132,6 @@
 
 <!-- ========== Update Button ========== -->
 <div class="col-sm-12">
-  <div class="col-sm-6 text-center">
-    <button id="done" class="btn btn-dash-update">UPDATE</button>
-  </div>
   <div class="col-sm-6 text-center">
     <button id="done" class="btn btn-dash-add">ADD PRODUCT</button>
   </div>
