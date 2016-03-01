@@ -84,10 +84,13 @@ dashboard.controller('dashboardController', function ($scope,  $http) {
       default:
         return {$: ""}
     }
-
-
   }
 
+  $scope.logout = function(){
+    sessionStorage.clear();
+    window.location = "login.php";
+
+  }
 
 
 });

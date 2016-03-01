@@ -10,7 +10,7 @@
     <script type="text/javascript" src="lib/js/angular.min.js"></script>
   </head>
 
-  <!-- <script>
+  <script>
     if(sessionStorage.getItem('userid')){
       var userid = sessionStorage.getItem('userid');
       var username = sessionStorage.getItem('f_name');
@@ -20,7 +20,7 @@
       window.location = "login.php";
     }
 
-  </script> -->
+  </script>
 <body ng-controller ="dashboardController">
 
 <!-- ================================== NAVIGATION SIDEBAR ================================== -->
@@ -59,7 +59,7 @@
 
       <div class="list-group">
         <a href="index.php" class="list-group-item">Back to Home</a>
-        <a href="#" class="list-group-item">Logout</a>
+        <a href="#" class="list-group-item" ng-click = "logout()">Logout</a>
       </div>
     </div> <!-- column -->
   </div> <!-- dashboard-nav -->
