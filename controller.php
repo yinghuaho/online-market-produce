@@ -65,5 +65,19 @@ include('class_lib.php');
    $transaction->lazy_insert();
 }
 
+if($_REQUEST['method'] == "getProducts"){
+  $prdocuts = new database;
+  $columns = array("id","product_name", "product_description", "price", "amount", "category", "sale", "dateupdated","image");
+  $prdocuts->set_lazy_select($db,"inventory",$columns,array(),array(),array(),"=");
+  $prdocuts->lazy_select();
+}
+
+if($_POST['method'] == "updateProduct"){
+    $update = new database;
+    $updateValue = array("product_name" =>  $_POST['product_name'], "product_description" => $_POST['product_description'],"price" => $_POST['price'],"amount" => $_POST['amount'],"image" => $_POST['image']);
+    $where = array("id"=> $_POST['id']);
+    $update->set_lazy_update($db,"inventory",$updateValue,$where);
+    $update->lazy_update();
+  }
 
 ?>

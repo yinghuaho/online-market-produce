@@ -50,11 +50,11 @@
         <span class="list-group-item active">
           Categories
         </span>
-        <a href="#" class="list-group-item">Organic Fruits</a>
-        <a href="#" class="list-group-item">Organic Vegetables</a>
-        <a href="#" class="list-group-item">Dairy</a>
-        <a href="#" class="list-group-item">Meats</a>
-        <a href="#" class="list-group-item">Other</a>
+        <a href="#" class="list-group-item" ng-click="changeCategory('Fruits')">Organic Fruits</a>
+        <a href="#" class="list-group-item" ng-click="changeCategory('Vegetables')">Organic Vegetables</a>
+        <a href="#" class="list-group-item" ng-click="changeCategory('Dairy')">Dairy</a>
+        <a href="#" class="list-group-item" ng-click="changeCategory('Meats')">Meats</a>
+        <a href="#" class="list-group-item" ng-click="changeCategory('Other')">Other</a>
       </div>
 
       <div class="list-group">
@@ -71,17 +71,17 @@
 
 <!-- =================================== FIRST ROW STARTS HERE =================================== -->
 
-      <div ng-repeat = "product in products | limitTo:20:0" class="col-md-3 col-sm-6">
+      <div ng-repeat = "product in products | filter:getCategory() | limitTo:20:0" class="col-md-3 col-sm-6">
         <div class="card"> <div class="card-thumbnail">
-            <img ng-src="{{product.img}}" alt="veggies"/>
+            <img ng-src="{{product.image}}"/>
           </div>
           <!-- thumbnail -->
 
-          <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="{{product.url}}"/> </h4>
+          <h4 class="card-title">Image URL: <input id="imgurl{{product.id}}" type="text" class="form-control text-center" value="{{product.image}}"/> </h4>
           <!-- <input type="file" name="file" id="file" class="custom-file-input" style="width:100%"/> -->
-          <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="{{product.name}}"/> </h4>
-          <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="${{product.price}}"/> </h4>
-          <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="{{product.description}}"/> </h4>
+          <h4 class="card-title">Product Name: <input id="name{{product.id}}" type="text" class="form-control text-center" value="{{product.product_name}}"/> </h4>
+          <h4 class="card-title">Unit Price: <input id="price{{product.id}}" type="text" class="form-control text-center" value="{{product.price}}"/> </h4>
+          <h4 class='card-title'>Description: <input id="desc{{product.id}}"type="text" class="form-control text-center" value="{{product.product_description}}"/> </h4>
 
           <div class="col-md-8 col-md-offset-2">
             <!-- <strong class="card-qty">QTY.</strong> -->
@@ -90,7 +90,7 @@
                   <button class="btn btn-success" ng-click='minus($index)'>-</button>
                 </div>
 
-                <input type="number" class="form-control text-center" value="{{product.quanity}}"/>
+                <input type="number" id="amount{{product.id}}" class="form-control text-center" value="{{product.amount}}"/>
 
                 <div class="input-group-btn">
                   <button class="btn btn-success" ng-click='add($index)'>+</button>
@@ -99,7 +99,7 @@
           </div>  <!-- COL MD 6 -->
 
           <div class="clearfix"></div>
-          <button id="done" class="btn btn-dash-update">UPDATE</button>
+          <button id="done" class="btn btn-dash-update" ng-click = "update($index)">UPDATE</button>
           <button class="btn btn-dash-cards btn-block" data-toggle="modal" data-target="#myModal" style="margin-top: 15px;">Remove</button>
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -132,6 +132,9 @@
 
 <!-- ========== Update Button ========== -->
 <div class="col-sm-12">
+  <div class="col-sm-6 text-center">
+    <button id="done" class="btn btn-dash-update">Refresh</button>
+  </div>
   <div class="col-sm-6 text-center">
     <button id="done" class="btn btn-dash-add">ADD PRODUCT</button>
   </div>
