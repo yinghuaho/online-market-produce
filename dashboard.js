@@ -61,6 +61,27 @@ dashboard.controller('dashboardController', function ($scope,  $http) {
        //error handling if ajax update failed
      });
 
+     var post = $http({
+       method: "post",
+       url: "controller.php",
+       params:{
+         method: "getProducts"
+       }//PHP must get value by $_REQUEST
+     });
+
+     post.success(function(respond){
+       setTimeout(function () {
+       $scope.products = respond;
+     }, 200);
+     });
+
+     post.error(function(resp){
+       //error messages here if ajax failed
+       console.log("failed ajax called");
+     });
+
+
+
    }
 
    //filter sectioin
@@ -89,7 +110,6 @@ dashboard.controller('dashboardController', function ($scope,  $http) {
   $scope.logout = function(){
     sessionStorage.clear();
     window.location = "login.php";
-
   }
 
 

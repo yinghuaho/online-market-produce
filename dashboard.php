@@ -90,7 +90,7 @@
                   <button class="btn btn-success" ng-click='minus($index)'>-</button>
                 </div>
 
-                <input type="number" id="amount{{product.id}}" class="form-control text-center" value="{{product.amount}}"/>
+                <input type="text" id="amount{{product.id}}" class="form-control text-center" value="{{product.amount}}"/>
 
                 <div class="input-group-btn">
                   <button class="btn btn-success" ng-click='add($index)'>+</button>
