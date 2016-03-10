@@ -5,7 +5,7 @@ include('class_lib.php');
 	 $login = new database;
 	 $columns = array("id","f_name", "l_name", "secruitycode");
 	 //$where = array("username"=> "admin" ,"password" => "123");
-	 $where = array("username"=> $_POST['username'] ,"password" => $_POST['userpassword']);
+	 $where = array("username"=> $_POST['username'] ,"password" => md5($_POST['userpassword']));
 	 /*$orderBy = array();*/
 	 $orderBy = array();
 	 $wherestyle = "=";
