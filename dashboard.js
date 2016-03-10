@@ -1,17 +1,19 @@
 var dashboard = angular.module('dashboard', []);
 
-dashboard.controller('dashboardController', function ($scope,  $http) {
+dashboard.controller('dashboardController',[ "$scope","$http", "$httpParamSerializerJQLike", function ($scope,  $http , $httpParamSerializerJQLike) {
 
   var post = $http({
     method: "post",
     url: "controller.php",
-    params:{
+   data:$httpParamSerializerJQLike({
       method: "getProducts"
-    }//PHP must get value by $_REQUEST
+    }),//PHP must get value by $_REQUEST
+    headers: {'Content-Type' : 'application/x-www-form-urlencoded'}
   });
 
   post.success(function(resp){
     $scope.products = resp;
+    console.log(resp);
   });
 
   post.error(function(resp){
@@ -40,7 +42,7 @@ dashboard.controller('dashboardController', function ($scope,  $http) {
      var update = $http({
        method: "post",
        url: "controller.php",
-       data:$.param({
+       data:$httpParamSerializerJQLike({
          method: "updateProduct",
          id: $scope.products[index].id,
          product_name: document.getElementById("name"+$scope.products[index].id).value,
@@ -54,6 +56,7 @@ dashboard.controller('dashboardController', function ($scope,  $http) {
 
      update.success(function(resp){
        console.log("success");
+       console.log(resp);
      });
 
      update.error(function(resp){
@@ -113,4 +116,4 @@ dashboard.controller('dashboardController', function ($scope,  $http) {
   }
 
 
-});
+}]);

@@ -71,7 +71,7 @@
 
 <!-- =================================== FIRST ROW STARTS HERE =================================== -->
 
-      <div ng-repeat = "product in products | filter:getCategory() | limitTo:20:0" class="col-md-3 col-sm-6">
+      <div ng-repeat = "product in products  | filter:getCategory() | limitTo:20:0" class="col-md-3 col-sm-6">
         <div class="card"> <div class="card-thumbnail">
             <img ng-src="{{product.image}}"/>
           </div>
@@ -143,6 +143,9 @@
     </div> <!-- display -->
   </div> <!-- column -->
 </div> <!-- container -->
+
+
+<!-- ========== Add Product Button ========== -->
 
 
 

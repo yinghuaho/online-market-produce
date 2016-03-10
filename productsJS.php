@@ -19,7 +19,7 @@ include('connection.php');
       }
 		
 		//When page load, user ajax to retrieve on sale items from database
-		var loadingProducts = function(limit){
+		var loadingProducts = function(){
 				$.ajax({
 					url: "controller.php",
 					dataType:"json",
