@@ -19,9 +19,9 @@
    var app = angular.module('productRow', []);
    app.controller('productRowCrontroller', function($scope) {
       $scope.shoppingCartItems = shoppingCartItems;
+      console.log($scope.shoppingCartItems);
       $scope.parseInt = parseInt;
       $scope.totals = 0;
-      $scope.amountValidation = true;
       var resultsData = [];
 
           var loadingProducts = function(){
@@ -55,23 +55,6 @@
 
     loadingProducts();
 
-    function findAmount (array, attr, value){
-      console.log("works");
-      console.log(array,attr,value);
-      for (var i = 0; i < array.length; i++)
-        {
-          console.log(i);
-          console.log(array[i]["id"])
-          if(array[i]["id"] == 28 )
-          {
-            console.log("works");
-            console.log(array[i].amount);
-            return array[i].amount;
-          }
-        }
-    }
-
-    findAmount(resultsData, "id", "28");
       $scope.minus = function(x){
          console.log(x);
          if(x.quantity == 1)
@@ -136,7 +119,7 @@
            }, 500);
        }
 
-   });
+
 
    var checkout = document.getElementById("done");
    checkout.onclick = function (){
@@ -146,34 +129,91 @@
        var numb = document.getElementById('totals').innerText;
        var items ="";
        var total = numb.match(/\d/g);
+       var amountCorrect = true;
        total = total.join("");
-       for(var i = 0; i<shoppingCartItems.length; i++)
-       {
-          items += " < Name: " + shoppingCartItems[i].name + " - Quantity: " + quantity[i].value + " - Price For Each : " +  forPrice[i].innerText+ " - SubTotal: "+ forTotal[i].innerText +"  >  ";
+
+      function findAmount (array, attr, value){
+
+      for (var i = 0; i < array.length; i++)
+        {
+          if(array[i][attr] == value )
+          {
+            return array[i].amount;
+          }
+        }
+      }
+       var outofstock = "";
+
+       for(var i = 0; i<shoppingCartItems.length; i++){
+        console.log(shoppingCartItems[i].id);
+        var stockAmount = findAmount(resultsData, "id", shoppingCartItems[i].id);
+        console.log(stockAmount);
+        console.log(quantity[i].value);
+        if(quantity[i].value > parseInt(stockAmount))
+        {
+            amountCorrect = false;
+            outofstock += shoppingCartItems[i].name + " only have " + stockAmount + " at the moment!" + '\n' ;
+        }
        }
 
-        $.ajax({
-               url: "controller.php",
-               dataType:"json",
-               data:{
-                 method: "transactionComplete",
-                 total:total,
-                 items:items
-               },
-               type:"post",
-               success:function(result){
-                  console.log(result);
-               },//success:function(result)
-               error: function(jqXHR,textStatus, errorThrown) {
-                  console.log(jqXHR);
-                  console.log(textStatus);
-                  console.log(errorThrown);
-               }
-       });//ajax
+       if (amountCorrect == false)
+       {
+          outofstock += "Please revise your amounts !!"
+          alert(outofstock);
+          amountCorrect = true;
 
-       window.location.href="transaction.php";
+       }else if (amountCorrect == true)
+       {
+        for(var i = 0; i<shoppingCartItems.length; i++)
+       {
+          items += " < Name: " + shoppingCartItems[i].name + " - Quantity: " + quantity[i].value + " - Price For Each : " +  forPrice[i].innerText+ " - SubTotal: "+ forTotal[i].innerText +"  >  ";
+
+            var stockAmount = findAmount(resultsData, "id", shoppingCartItems[i].id);
+            var newstock = parseInt(stockAmount) - quantity[i].value;
+          $.ajax({
+             url: "controller.php",
+             dataType:"json",
+             data:{
+               method: "updateProductAmount",
+               id:shoppingCartItems[i].id,
+               amount:newstock
+             },
+             type:"post",
+             success:function(result){
+             },//success:function(result)
+             error: function(jqXHR,textStatus, errorThrown) {
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+             }
+          });//ajax
 
 
+       }
+
+          $.ajax({
+                 url: "controller.php",
+                 dataType:"json",
+                 data:{
+                   method: "transactionComplete",
+                   total:total,
+                   items:items
+                 },
+                 type:"post",
+                 success:function(result){
+                    console.log(result);
+                 },//success:function(result)
+                 error: function(jqXHR,textStatus, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                 }
+         });//ajax
+
+         window.location.href="transaction.php";
+       }
    }
+
+   });
 
 </script>

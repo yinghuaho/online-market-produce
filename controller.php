@@ -78,6 +78,14 @@ if($_POST['method'] == "updateProduct"){
     $where = array("id"=> $_POST['id']);
     $update->set_lazy_update($db,"inventory",$updateValue,$where);
     $update->lazy_update();
-  }
+ }
+
+if($_POST['method'] == "updateProductAmount"){
+$update = new database;
+$updateValue = array("amount" => $_POST['amount']);
+$where = array("id"=> $_POST['id']);
+$update->set_lazy_update($db,"inventory",$updateValue,$where);
+$update->lazy_update();
+}
 
 ?>
