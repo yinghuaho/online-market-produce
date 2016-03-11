@@ -22,35 +22,50 @@ dashboard.controller('dashboardController',[ "$scope","$http", "$httpParamSerial
   });
 
 
-   $scope.add = function(index){
-    $scope.products[index].amount = parseInt($scope.products[index].amount) + 1;
+   $scope.add = function(id){
+    document.getElementById("amount"+id).value = parseInt(document.getElementById("amount"+id).value) + 1;
   }//add function,increase quanity by 1
 
-   $scope.minus = function(index){
-     if($scope.products[index].amount > 0)
+   $scope.minus = function(id){
+     if(document.getElementById("amount"+id).value > 0)
      {
-     $scope.products[index].amount = parseInt($scope.products[index].amount) - 1;
+     document.getElementById("amount"+id).value = parseInt(document.getElementById("amount"+id).value) -1;
      }
    }//minu function,reduce quanity by 1
 
-   $scope.removeProduct = function(index){
-     $scope.products.splice(index,1);
+   $scope.removeProduct = function(id){
      $(".modal-backdrop").css("display", "none");
-     //something more is coming
+
+     var post = $http({
+       method: "post",
+       url: "controller.php",
+       data:$httpParamSerializerJQLike(
+        {
+          method: "deleteProduct",
+          id: id
+        }
+      ),
+       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+     });
+
+     post.success(function(respond){
+      console.log("works");
+      location.reload();
+     });
    }//remove products
 
-   $scope.update = function(index){
+   $scope.update = function(id){
      var update = $http({
        method: "post",
        url: "controller.php",
        data:$httpParamSerializerJQLike({
          method: "updateProduct",
-         id: $scope.products[index].id,
-         product_name: document.getElementById("name"+$scope.products[index].id).value,
-         product_description: document.getElementById('desc'+$scope.products[index].id).value,
-         price: parseFloat(document.getElementById('price'+$scope.products[index].id).value),
-         image: document.getElementById('imgurl'+$scope.products[index].id).value,
-         amount: document.getElementById('amount'+$scope.products[index].id).value
+         id:id,
+         product_name: document.getElementById("name"+id).value,
+         product_description: document.getElementById('desc'+id).value,
+         price: parseFloat(document.getElementById('price'+id).value),
+         image: document.getElementById('imgurl'+id).value,
+         amount: document.getElementById('amount'+id).value
        }),
        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
      });
@@ -68,13 +83,13 @@ dashboard.controller('dashboardController',[ "$scope","$http", "$httpParamSerial
      var post = $http({
        method: "post",
        url: "controller.php",
-       params:{
-         method: "getProducts"
-       }//PHP must get value by $_REQUEST
+       data:$httpParamSerializerJQLike({method: "getProducts"}),
+       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
      });
 
      post.success(function(respond){
        setTimeout(function () {
+        console.log(respond);
        $scope.products = respond;
      }, 200);
      });
@@ -116,5 +131,79 @@ dashboard.controller('dashboardController',[ "$scope","$http", "$httpParamSerial
     window.location = "login.php";
   }
 
+  $scope.addNewProducts = function(){
+    var url = document.getElementById("addNewUrl").value;
+    var name = document.getElementById("addNewName").value;
+    var price = document.getElementById("addNewPrice").value;
+    var desc = document.getElementById("addNewDescription").value;
+    var amount = document.getElementById("addNewAmount").value;
+    $scope.errorMessage = "";
+    var validation = true;
+
+
+    if(url == "")
+    {
+      validation = false;
+      $scope.errorMessage += "Url Can't Be Empty" + '\n';
+    }
+
+    if(name == ""){
+      validation = false;
+      $scope.errorMessage += "Name Can't Be Empty"  + '\n';
+    }
+
+    if(price == ""){
+      validation = false;
+      $scope.errorMessage += "Price Can't Be Empty"  + '\n';
+    }
+
+    if(desc == ""){
+      validation = false;
+      $scope.errorMessage += "Description Can't Be Empty"  + '\n';
+    }
+
+    if(amount == ""){
+      validation = false;
+      $scope.errorMessage += "Amount Can't Be Empty"  + '\n';
+    }
+
+    if(validation == false){
+      $scope.errorMessage = $scope.errorMessage.split( "\n" );
+      $scope.error = true;
+    }
+    else{
+       var update = $http({
+         method: "post",
+         url: "controller.php",
+         data:$httpParamSerializerJQLike({
+           method: "addNewProducts",
+           product_name:name,
+           product_description: desc,
+           price: price,
+           image: url,
+           amount: amount
+         }),
+         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+       });
+
+       update.success(function(resp){
+         console.log("success");
+         $(".modal").css("display", "none");
+         $(".modal-backdrop").css("display", "none");
+         $('html, body').css('overflowY', 'auto'); 
+         location.reload();
+
+       });
+    }
+
+
+
+
+
+  }
+
 
 }]);
+
+
+ 

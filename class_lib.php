@@ -350,6 +350,7 @@ include('connection.php');
 		 $where = $this->where;
      $querey = "UPDATE ".$tablename." SET ";
      $arrLength = count($updateValue);
+     $arrlengthWhere = count($where);
      $updateCount = 0;
      foreach($updateValue as $i => $i_value )
 		 {

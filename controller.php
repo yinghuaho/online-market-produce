@@ -88,4 +88,18 @@ $update->set_lazy_update($db,"inventory",$updateValue,$where);
 $update->lazy_update();
 }
 
+if($_POST['method'] == "addNewProducts"){
+$transaction = new database;
+$insertValue = array("product_name" =>  $_POST['product_name'], "product_description" => $_POST['product_description'],"price" => $_POST['price'],"amount" => $_POST['amount'],"image" => $_POST['image']);
+$transaction->set_lazy_insert($db,"inventory",$insertValue);
+$transaction->lazy_insert();
+}
+
+if($_POST['method'] == "deleteProduct"){
+$delete = new database;
+$where = array("id"=>  $_POST['id']);
+$delete->set_lazy_delete($db,"inventory",$where);
+$delete->lazy_delete();
+}
+
 ?>

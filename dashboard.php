@@ -89,7 +89,7 @@
 
 <!-- =================================== FIRST ROW STARTS HERE =================================== -->
 
-      <div ng-repeat = "product in products  | filter:getCategory() | limitTo:20:0" class="col-md-3 col-sm-6">
+      <div ng-repeat = "product in products  | filter:getCategory() | limitTo:20:0 track by $index" class="col-md-3 col-sm-6">
         <div class="card"> <div class="card-thumbnail">
             <img ng-src="{{product.image}}"/>
           </div>
@@ -105,19 +105,19 @@
             <!-- <strong class="card-qty">QTY.</strong> -->
               <div class="input-group">
                 <div class="input-group-btn">
-                  <button class="btn btn-success" ng-click='minus($index)'>-</button>
+                  <button class="btn btn-success" ng-click='minus(product.id)'>-</button>
                 </div>
 
                 <input type="text" id="amount{{product.id}}" class="form-control text-center" value="{{product.amount}}"/>
 
                 <div class="input-group-btn">
-                  <button class="btn btn-success" ng-click='add($index)'>+</button>
+                  <button class="btn btn-success" ng-click='add(product.id)'>+</button>
                 </div>
               </div>
           </div>  <!-- COL MD 6 -->
 
           <div class="clearfix"></div>
-          <button id="done" class="btn btn-dash-update" ng-click = "update($index)">UPDATE</button>
+          <button id="done" class="btn btn-dash-update" ng-click = "update(product.id)">UPDATE</button>
           <button class="btn btn-dash-cards btn-block" data-toggle="modal" data-target="#myModal" style="margin-top: 15px;">Remove</button>
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -129,7 +129,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" ng-click='removeProduct($index)' data-dismiss="modal">Remove</button>
+                    <button type="button" class="btn btn-primary" ng-click='removeProduct(product.id)' data-dismiss="modal">Remove</button>
                   </div>
                 </div>
               </div>
@@ -175,33 +175,29 @@
       <div class="modal-body">
         
         <div class="card">
-          <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="Insert Image URL"/></h4>
-           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Product Name"/></h4>
-           <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$0.00"/> </h4>
-           <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
+          <h4 class="card-title">Image URL: <input id = "addNewUrl" type="text" class="form-control text-center" placeholder="Insert Image URL"/></h4>
+           <h4 class="card-title">Product Name: <input id = "addNewName" type="text" class="form-control text-center" placeholder="Product Name"/></h4>
+           <h4 class="card-title">Unit Price: <input   id = "addNewPrice" type="number" class="form-control text-center" placeholder="$0.00"/> </h4>
+           <h4 class='card-title'>Description: <input id = "addNewDescription" type="text" class="form-control text-center" placeholder="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
  
            <div class="col-md-8 col-md-offset-2">
              <!-- <strong class="card-qty">QTY.</strong> -->
-               <div class="input-group">
-                 <div class="input-group-btn">
-                   <button class="btn btn-success">-</button>
-                 </div>
+               <div class="input-group" style = "margin: 0 auto;">
  
-                 <input type="text" class="form-control text-center" value="1"/>
+                 <input type="number" id = "addNewAmount" class="form-control text-center" value="1"/>
  
-                 <div class="input-group-btn">
-                   <button class="btn btn-success">+</button>
-                 </div>
                </div>
            </div>  <!-- COL MD 6 -->
- 
-           <div class="clearfix"></div>
+            <div class="clearfix"></div>
+          <div ng-show ="error" style = "color:red; text-align:center;" ng-repeat =" error in errorMessage">
+            {{error}}
+          </div>
           </div> <!-- CARD -->
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Add Product</button>
+        <button type="button" class="btn btn-primary" ng-click ="addNewProducts()">Add Product</button>
       </div>
     </div>
   </div>
