@@ -57,7 +57,10 @@ $("#login").click(function(){
 			  if(result[0].message == "success")
 			  {
 				  sessionStorage.setItem('userid', result[0].id);
+				  sessionStorage.setItem('username', result[0].username)
 					sessionStorage.setItem('f_name', result[0].f_name);
+					sessionStorage.setItem('l_name', result[0].l_name);
+					sessionStorage.setItem('email', result[0].email);
 					sessionStorage.setItem('secruitycode', result[0].secruitycode);
 					window.location = "dashboard.php";
 

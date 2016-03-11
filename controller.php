@@ -3,7 +3,7 @@ include('class_lib.php');
 
  if($_POST['method'] == "Login"){
 	 $login = new database;
-	 $columns = array("id","f_name", "l_name", "secruitycode");
+	 $columns = array("id", "username", "f_name", "l_name", "email", "secruitycode");
 	 //$where = array("username"=> "admin" ,"password" => "123");
 	 $where = array("username"=> $_POST['username'] ,"password" => md5($_POST['userpassword']));
 	 /*$orderBy = array();*/

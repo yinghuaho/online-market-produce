@@ -12,9 +12,12 @@
 
   <script>
     if(sessionStorage.getItem('userid')){
-      var userid = sessionStorage.getItem('userid');
-      var username = sessionStorage.getItem('f_name');
-      var secruitycode =  sessionStorage.getItem('secruitycode');
+      var userid       = sessionStorage.getItem('userid'),
+          username     = sessionStorage.getItem('username'),
+          firstname    = sessionStorage.getItem('f_name'),
+          lastname     = sessionStorage.getItem('l_name'),
+          email        = sessionStorage.getItem('email'),
+          secruitycode = sessionStorage.getItem('secruitycode');
     }
     else {
       window.location = "login.php";
@@ -47,21 +50,36 @@
 
     <div id="dashboard-nav-col" class="col-xs-2">
       <div class="list-group">
-        <span class="list-group-item active">
-          Categories
-        </span>
-        <a href="#" class="list-group-item" ng-click="changeCategory('Fruits')">Organic Fruits</a>
-        <a href="#" class="list-group-item" ng-click="changeCategory('Vegetables')">Organic Vegetables</a>
-        <a href="#" class="list-group-item" ng-click="changeCategory('Dairy')">Dairy</a>
-        <a href="#" class="list-group-item" ng-click="changeCategory('Meats')">Meats</a>
-        <a href="#" class="list-group-item" ng-click="changeCategory('Other')">Other</a>
+        <span class="list-group-item active">Profile Information</span>
+        <span id="username" class="list-group-item"></span>
+        <span id="fullname" class="list-group-item"></span>
+        <span id="emailaddy" class="list-group-item"></span>
       </div>
 
       <div class="list-group">
         <a href="index.php" class="list-group-item">Back to Home</a>
         <a href="#" class="list-group-item" ng-click = "logout()">Logout</a>
       </div>
+
+      <div class="list-group">
+        <span class="list-group-item active">Manage Products By Category</span>
+        <a href="#" class="list-group-item" ng-click="changeCategory('')">All Products</a>
+        <a href="#" class="list-group-item" ng-click="changeCategory('Fruits')">Organic Fruits</a>
+        <a href="#" class="list-group-item" ng-click="changeCategory('Vegetables')">Organic Vegetables</a>
+        <a href="#" class="list-group-item" ng-click="changeCategory('Dairy')">Dairy</a>
+        <a href="#" class="list-group-item" ng-click="changeCategory('Meats')">Meats</a>
+        <a href="#" class="list-group-item" ng-click="changeCategory('Other')">Other</a>
+      </div>
     </div> <!-- column -->
+
+    <script>
+    $(document).ready(function(){
+      $("#username").html("<b>Username</b>: " + sessionStorage.getItem('username'));
+      $("#fullname").html("<b>Name</b>: " + sessionStorage.getItem('f_name') + " " + sessionStorage.getItem('l_name'));
+      $("#emailaddy").html("<b>Email</b>: " + sessionStorage.getItem('email'));
+    }); // document ready
+    </script>
+
   </div> <!-- dashboard-nav -->
 
 <!-- ================================== TABLE OF ITEMS ================================== -->
