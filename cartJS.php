@@ -15,7 +15,7 @@
         document.getElementById("done").disabled = true;
      }
    }
-   
+
    var app = angular.module('productRow', []);
    app.controller('productRowCrontroller', function($scope) {
       $scope.shoppingCartItems = shoppingCartItems;
@@ -31,7 +31,28 @@
             x.quantity = parseInt(x.quantity) - 1;
          }
       }
-      
+
+      var loadingProducts = function(){
+              $.ajax({
+                  url: "controller.php",
+                  dataType:"json",
+                  data:{
+                    method: "productsOnSale"
+                  },
+                  type:"post",
+                  success:function(result){
+                    console.log(result);
+                    $scope.Results = result;
+                    console.log($scope.Results);
+                  },//success:function(result)
+                  error: function(jqXHR,textStatus, errorThrown) {
+                      console.log(jqXHR);
+                      console.log(textStatus);
+                      console.log(errorThrown);
+                  }
+              });//ajax
+          };
+
       $scope.remove = function(){
          console.log(this);
          shoppingCartItems.splice(this.$index,1);
@@ -42,13 +63,13 @@
               document.getElementById("done").disabled = true;
            }
       }
-      
+
       $scope.total = function(x){
          var total = (x.price * x.quantity);
          this.total_num = total.toFixed(2);
          return (this.total_num);
       }
-      
+
        for(var x=0; x<$scope.shoppingCartItems.length; x++) {
            $scope.$watch('shoppingCartItems['+x+']', function() {
                var total = 0;
@@ -56,30 +77,30 @@
                   var forTotal = document.getElementsByClassName('forTotal');
                   for (var i = 0; i < forTotal.length; ++i) {
                       console.log(forTotal.length);
-                      total += parseFloat(forTotal[i].innerText);  
-                  }     
+                      total += parseFloat(forTotal[i].innerText);
+                  }
                   total = total.toFixed(2);
-                  document.getElementById('totals').innerText = "Total: " + total;      
+                  document.getElementById('totals').innerText = "Total: " + total;
               }, true);
            }, 500);
        }
-      
+
    });
-   
+
    var checkout = document.getElementById("done");
    checkout.onclick = function (){
        var quantity = document.getElementsByClassName('quantity');
-       var forTotal = document.getElementsByClassName('forTotal'); 
-       var forPrice = document.getElementsByClassName('priceEach');      
+       var forTotal = document.getElementsByClassName('forTotal');
+       var forPrice = document.getElementsByClassName('priceEach');
        var numb = document.getElementById('totals').innerText;
        var items ="";
        var total = numb.match(/\d/g);
        total = total.join("");
        for(var i = 0; i<shoppingCartItems.length; i++)
        {
-          items += " < Name: " + shoppingCartItems[i].name + " - Quantity: " + quantity[i].value + " - Price For Each : " +  forPrice[i].innerText+ " - SubTotal: "+ forTotal[i].innerText +"  >  ";         
+          items += " < Name: " + shoppingCartItems[i].name + " - Quantity: " + quantity[i].value + " - Price For Each : " +  forPrice[i].innerText+ " - SubTotal: "+ forTotal[i].innerText +"  >  ";
        }
-console.log(items);
+
         $.ajax({
                url: "controller.php",
                dataType:"json",
@@ -90,18 +111,18 @@ console.log(items);
                },
                type:"post",
                success:function(result){
-                  console.log(result); 
-               },//success:function(result)	
+                  console.log(result);
+               },//success:function(result)
                error: function(jqXHR,textStatus, errorThrown) {
-                  console.log(jqXHR); 
-                  console.log(textStatus); 
-                  console.log(errorThrown); 
+                  console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
                }
-       });//ajax	
+       });//ajax
 
        window.location.href="transaction.php";
 
-      
+
    }
 
 </script>

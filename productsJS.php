@@ -1,5 +1,5 @@
 <script>
-<?php 
+<?php
 include('connection.php');
 ?>
 	$(document).ready(function(){
@@ -8,7 +8,7 @@ include('connection.php');
 		var wherename ="";
 		var limit = 0;
 		var orderby = "";
-      
+
       //LocalStorage Checking
       if (localStorage.getItem("shoppingCartItems") === null) {
         var shoppingCartItems = [];
@@ -17,7 +17,7 @@ include('connection.php');
          var shoppingCartItems = JSON.parse(retrievedData);
          console.log(shoppingCartItems);
       }
-		
+
 		//When page load, user ajax to retrieve on sale items from database
 		var loadingProducts = function(){
 				$.ajax({
@@ -33,32 +33,32 @@ include('connection.php');
 					},
 					type:"post",
 					success:function(result){
+					  console.log(result);
 
-		
 					  if(result[0].message == "success")
 					  {
 						  for(var i = 0; i< result.length; i++)
 						  {
-								$('#products_display').append("<div id='"+result[i].id+"products'class='col-md-3 col-sm-6'><div class='card'><div class='card-thumbnail'><img id='"+result[i].id+"image' src='" +result[i].image + "'/></div><h3 id='"+result[i].id+"name' class='card-title'>"+result[i].product_name+"</h3><h5 class='card-title'>$<span id='"+result[i].id+"price'>"+result[i].price+"</span> CAD</h5><h6 class='card-title'>"+result[i].product_description+"</h6><div class='col-md-8 col-md-offset-2'><div class='input-group'><div class='input-group-btn'><button id='"+result[i].id+"minus' class='minus btn btn-success'>-</button></div><input id='"+result[i].id+"amount' type='text' class='form-control text-center' value='1'></input><div class='input-group-btn'><div id='"+result[i].id+"plus' class='add btn btn-success'>+</div></div></div></div>	<div class='clearfix'></div><button id='"+result[i].id+"toCart' class='btn btn-danger btn-block toCart' style='margin-top: 15px;'>Add to Cart</button></div> </div>"); 	  
+								$('#products_display').append("<div id='"+result[i].id+"products'class='col-md-3 col-sm-6'><div class='card'><div class='card-thumbnail'><img id='"+result[i].id+"image' src='" +result[i].image + "'/></div><h3 id='"+result[i].id+"name' class='card-title'>"+result[i].product_name+"</h3><h5 class='card-title'>$<span id='"+result[i].id+"price'>"+result[i].price+"</span> CAD</h5><h6 class='card-title'>"+result[i].product_description+"</h6><div class='col-md-8 col-md-offset-2'><div class='input-group'><div class='input-group-btn'><button id='"+result[i].id+"minus' class='minus btn btn-success'>-</button></div><input id='"+result[i].id+"amount' type='text' class='form-control text-center' value='1'></input><div class='input-group-btn'><div id='"+result[i].id+"plus' class='add btn btn-success'>+</div></div></div></div>	<div class='clearfix'></div><button id='"+result[i].id+"toCart' class='btn btn-danger btn-block toCart' style='margin-top: 15px;'>Add to Cart</button></div> </div>");
 						  }
-						  
+
 					  }else if(result[0].message == "failed")
 					  {
 							console.log("something went WRONG");
-					  }		  
-		
-					},//success:function(result)	
+					  }
+
+					},//success:function(result)
 					error: function(jqXHR,textStatus, errorThrown) {
-						console.log(jqXHR); 
-						console.log(textStatus); 
-						console.log(errorThrown); 
+						console.log(jqXHR);
+						console.log(textStatus);
+						console.log(errorThrown);
 					}
-				});//ajax		
+				});//ajax
 			};
-		
-			
+
+
 		var loadpages = function()
-		{	
+		{
 			$("#pages").html("");
 			$('#products_display').html("");
 			var pages = onsaleItemAmount / 20;
@@ -78,12 +78,12 @@ include('connection.php');
 			}else
 			{
 				$("#next,#prev").hide();
-				loadingProducts();	
-			}	
+				loadingProducts();
+			}
 		};
-		
+
 		//logic for page number count.... continue
-				
+
 		$(document).on('click','.pagebutton', function(){
 			$('#products_display').html("");
          $(this).addClass("selectedPage");
@@ -91,7 +91,7 @@ include('connection.php');
 			loadingProducts(limit);
 			if(this.id == "0pages")
 			{
-				$("#prev").attr("disabled",true);	
+				$("#prev").attr("disabled",true);
 			}else
 			{
 				$("#prev").attr("disabled",false);
@@ -105,14 +105,14 @@ include('connection.php');
 			{
 				$("#next").attr("disabled",false);
 			}
-			
-			
-			
+
+
+
 			$("#next,#prev").removeClass().addClass(this.id);
 
-		
+
 		});
-		
+
 		$("#next").click(function(e){
 			e.preventDefault();
 			$("#prev").attr("disabled",false);
@@ -128,7 +128,7 @@ include('connection.php');
 			if(currentpage == maxpageclassname)
 			{
 				$("#next").attr("disabled",true);
-				
+
 			}else
 			{
 				console.log("worked");
@@ -144,9 +144,9 @@ include('connection.php');
 					$("#next").attr("disabled",true);
 				}
 			}
-			
+
 		});
-		
+
 		$("#prev").click(function(e){
 			e.preventDefault();
 			$("#next").attr("disabled",false);
@@ -169,11 +169,11 @@ include('connection.php');
 				}
 			}
 
-			
-			
+
+
 		});
-		
-		
+
+
 			//plus click
 			$(document).on('click','.add', function(){
 				var input = parseInt(this.id) + "amount";
@@ -181,7 +181,7 @@ include('connection.php');
 				itemamount++;
 				$("#"+input).val(itemamount);
 			});
-			
+
 			//minus click
 			$(document).on('click','.minus', function(){
 				var input = parseInt(this.id) + "amount";
@@ -192,7 +192,7 @@ include('connection.php');
 				$("#"+input).val(itemamount);
 				}
 			});
-         
+
           //plus click
          $(document).on('click','.toCart', function(){
             var values = parseInt(this.id);
@@ -203,7 +203,7 @@ include('connection.php');
             var quantity =  $("#"+values+"amount").val();
 /*            shoppingCartItems[0] = "asda";
             shoppingCartItems[1] = "asdasdasda";*/
-            var cartitem = 
+            var cartitem =
             {
              id:values,
              name:names,
@@ -215,17 +215,17 @@ include('connection.php');
              localStorage["shoppingCartItems"] = JSON.stringify(shoppingCartItems);
              cartsLength.innerHTML = shoppingCartItems.length;
          });
-			
+
 			//nav smooth animation
 			$(".dropdown-menu a, .top a").on('click', function(event) {
-				
+
 				  // Prevent default anchor click behavior
 				  event.preventDefault();
-				
+
 				  // Store hash
 				  var hash = this.hash;
 				  console.log(hash);
-				
+
 				  // Using jQuery's animate() method to add smooth page scroll
 				  // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
 				  $('html, body').animate({
@@ -234,42 +234,42 @@ include('connection.php');
 					  /*window.location.hash = hash;*/
 					});
 			 });
-			 
-			 
-			 
-			 	var onsaleItemAmount =	
-				<?php 
+
+
+
+			 	var onsaleItemAmount =
+				<?php
 					 $querey = "SELECT COUNT(*) FROM inventory;";
 					 $statement = $db->prepare($querey);
 					 $statement->execute();
 					 $result = $statement->fetchColumn();
 					 Print($result);
 				?>;
-				
+
 				loadpages();
-				
+
 				$("#selectCategory").on("change", function(){
 					console.log(this.value);
 					switch(this.value){
 						case "All":
 							onsaleItemAmount  =
-							<?php 
+							<?php
 								 $querey = "SELECT COUNT(*) FROM inventory;";
 								 $statement = $db->prepare($querey);
 								 $statement->execute();
 								 $result = $statement->fetchColumn();
 								 Print($result);
 							?>;
-							
-							console.log(onsaleItemAmount);	
+
+							console.log(onsaleItemAmount);
 							where = "";
-							wherename ="";	
-							wherestyle ="";	
+							wherename ="";
+							wherestyle ="";
 							loadpages();
 						break;
 						case "Fruits":
 							onsaleItemAmount  =
-							<?php 
+							<?php
 								 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Fruits';";
 								 $statement = $db->prepare($querey);
 								 $statement->execute();
@@ -277,13 +277,13 @@ include('connection.php');
 								 Print($result);
 							?>;
 							where = "Fruits";
-							wherename = "category";	
-							wherestyle ="";	
+							wherename = "category";
+							wherestyle ="";
 							loadpages();
 						break;
 						case "Vegetables":
 							onsaleItemAmount  =
-								<?php 
+								<?php
 									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Vegetables';";
 									 $statement = $db->prepare($querey);
 									 $statement->execute();
@@ -291,13 +291,13 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Vegetables";
-								wherename = "category";	
-								wherestyle ="";		
+								wherename = "category";
+								wherestyle ="";
 								loadpages();
-						break;	
+						break;
 						case "Dairy":
 							onsaleItemAmount  =
-								<?php 
+								<?php
 									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Dairy';";
 									 $statement = $db->prepare($querey);
 									 $statement->execute();
@@ -305,13 +305,13 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Dairy";
-								wherename = "category";	
-								wherestyle ="";		
+								wherename = "category";
+								wherestyle ="";
 								loadpages();
 						break;
 						case "Meats":
 							onsaleItemAmount  =
-								<?php 
+								<?php
 									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Meats';";
 									 $statement = $db->prepare($querey);
 									 $statement->execute();
@@ -319,13 +319,13 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Meats";
-								wherename = "category";		
+								wherename = "category";
 								wherestyle ="";
 								loadpages();
 						break;
 						case "Other":
 							onsaleItemAmount  =
-								<?php 
+								<?php
 									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Other';";
 									 $statement = $db->prepare($querey);
 									 $statement->execute();
@@ -334,27 +334,27 @@ include('connection.php');
 								?>;
 								where = "Other";
 								wherename = "category";
-								wherestyle ="";		
+								wherestyle ="";
 								loadpages();
 						break;
 
 					}
 				});
-				
+
 				$("#selectSort").on("change", function(){
 					console.log(this.value);
 					switch(this.value){
 						case "Lowest":
 							orderby = "price ASC";
-							console.log(orderby);		
+							console.log(orderby);
 							loadpages();
 						break;
-						case "Highest":	
-							orderby = "price DESC";		
+						case "Highest":
+							orderby = "price DESC";
 							loadpages();
-						break;	
+						break;
 						case "Availability":
-							orderby = "amount DESC";	
+							orderby = "amount DESC";
 							loadpages();
 						break;
 						case "Newest":
@@ -364,14 +364,14 @@ include('connection.php');
 
 					}
 				});
-				
-				
+
+
 				$("#Fruits, #Vegetables, #Dairy, #Meats, #Other").on("click", function(){
 					console.log(this.id);
 					switch(this.id){
 						case "Fruits":
 							onsaleItemAmount  =
-							<?php 
+							<?php
 								 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Fruits';";
 								 $statement = $db->prepare($querey);
 								 $statement->execute();
@@ -379,13 +379,13 @@ include('connection.php');
 								 Print($result);
 							?>;
 							where = "Fruits";
-							wherename = "category";	
-							wherestyle ="";	
+							wherename = "category";
+							wherestyle ="";
 							loadpages();
 						break;
 						case "Vegetables":
 							onsaleItemAmount  =
-								<?php 
+								<?php
 									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Vegetables';";
 									 $statement = $db->prepare($querey);
 									 $statement->execute();
@@ -393,13 +393,13 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Vegetables";
-								wherename = "category";	
-								wherestyle ="";		
+								wherename = "category";
+								wherestyle ="";
 								loadpages();
-						break;	
+						break;
 						case "Dairy":
 							onsaleItemAmount  =
-								<?php 
+								<?php
 									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Dairy';";
 									 $statement = $db->prepare($querey);
 									 $statement->execute();
@@ -407,13 +407,13 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Dairy";
-								wherename = "category";	
-								wherestyle ="";		
+								wherename = "category";
+								wherestyle ="";
 								loadpages();
 						break;
 						case "Meats":
 							onsaleItemAmount  =
-								<?php 
+								<?php
 									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Meats';";
 									 $statement = $db->prepare($querey);
 									 $statement->execute();
@@ -421,13 +421,13 @@ include('connection.php');
 									 Print($result);
 								?>;
 								where = "Meats";
-								wherename = "category";	
-								wherestyle ="";	
+								wherename = "category";
+								wherestyle ="";
 								loadpages();
 						break;
 						case "Other":
 							onsaleItemAmount  =
-								<?php 
+								<?php
 									 $querey = "SELECT COUNT(*) FROM inventory WHERE category = 'Other';";
 									 $statement = $db->prepare($querey);
 									 $statement->execute();
@@ -436,14 +436,14 @@ include('connection.php');
 								?>;
 								where = "Other";
 								wherename = "category";
-								wherestyle ="";		
+								wherestyle ="";
 								loadpages();
 						break;
 
 					}
 				});
-				
-		
+
+
 				$("#search").keypress(function(event) {
 					  if ( event.which == 13 ) {
 						  event.preventDefault();
@@ -456,32 +456,32 @@ include('connection.php');
 							},
 							type:"post",
 							success:function(result){
-							  onsaleItemAmount = result;	
-							  console.log(onsaleItemAmount);  
-							},//success:function(result)	
+							  onsaleItemAmount = result;
+							  console.log(onsaleItemAmount);
+							},//success:function(result)
 							error: function(jqXHR,textStatus, errorThrown) {
-								console.log(jqXHR); 
-								console.log(textStatus); 
-								console.log(errorThrown); 
+								console.log(jqXHR);
+								console.log(textStatus);
+								console.log(errorThrown);
 							}
-						});//ajax	
-						
+						});//ajax
+
 							wherename = "product_name";
 							where = "%"+$("#search").val()+"%";
-							wherestyle ="LIKE";		
+							wherestyle ="LIKE";
 							loadpages();
 							wherename = "";
 							where = "";
-							wherestyle ="";	
+							wherestyle ="";
 							$('html, body').animate({
 								scrollTop: parseInt($("#products_display").offset().top)
 							}, 2000);
 					  }
 
 				});
-		
-		
+
+
 	});
-	
+
 
 </script>

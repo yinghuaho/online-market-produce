@@ -35,6 +35,7 @@ dashboard.controller('dashboardController',[ "$scope","$http", "$httpParamSerial
 
    $scope.removeProduct = function(index){
      $scope.products.splice(index,1);
+     $(".modal-backdrop").css("display", "none");
      //something more is coming
    }//remove products
 
