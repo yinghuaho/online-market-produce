@@ -21,6 +21,57 @@
       $scope.shoppingCartItems = shoppingCartItems;
       $scope.parseInt = parseInt;
       $scope.totals = 0;
+      $scope.amountValidation = true;
+      var resultsData = [];
+
+          var loadingProducts = function(){
+        $.ajax({
+          url: "controller.php",
+          dataType:"json",
+          data:{
+            method: "displayProducts",
+            limit: 0,
+            wherename: "",
+            where:"",
+            wherestyle:"",
+            orderby:""
+          },
+          async:false,
+          type:"post",
+          success:function(result){
+          console.log(result);  
+          $scope.results = result;
+          resultsData = result;
+          console.log($scope.results); 
+    
+          },//success:function(result)  
+          error: function(jqXHR,textStatus, errorThrown) {
+            console.log(jqXHR); 
+            console.log(textStatus); 
+            console.log(errorThrown); 
+          }
+        });//ajax   
+      };
+
+    loadingProducts();
+
+    function findAmount (array, attr, value){
+      console.log("works");
+      console.log(array,attr,value);
+      for (var i = 0; i < array.length; i++)
+        {
+          console.log(i);
+          console.log(array[i]["id"])
+          if(array[i]["id"] == 28 )
+          {
+            console.log("works");
+            console.log(array[i].amount);
+            return array[i].amount;
+          }
+        }
+    }
+
+    findAmount(resultsData, "id", "28");
       $scope.minus = function(x){
          console.log(x);
          if(x.quantity == 1)

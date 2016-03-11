@@ -3,8 +3,7 @@
 <div class="container">
 	<div class="col-md-4 footer-content">
 		<ul class="footer-list">
-			<li><a href="#">About Us</a></li>
-			<li><a href="#">Contact Us</a></li>
+			<li><a href="#">Fresh 'n Healthy</a></li>
 		</ul>
 	</div>
 

@@ -111,7 +111,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" ng-click='removeProduct($index)'>Remove</button>
+                    <button type="button" class="btn btn-primary" ng-click='removeProduct($index)' data-dismiss="modal">Remove</button>
                   </div>
                 </div>
               </div>
@@ -133,10 +133,10 @@
 <!-- ========== Update Button ========== -->
 <div class="col-sm-12">
   <div class="col-sm-6 text-center">
-    <button id="done" class="btn btn-dash-update">Refresh</button>
+    <button id="refresh" class="btn btn-dash-update">REFRESH</button>
   </div>
   <div class="col-sm-6 text-center">
-    <button id="done" class="btn btn-dash-add">ADD PRODUCT</button>
+    <button class="btn btn-dash-add" data-toggle="modal" data-target="#add-product">ADD PRODUCT</button>
   </div>
 </div>
 
@@ -146,7 +146,48 @@
 
 
 <!-- ========== Add Product Button ========== -->
+<!-- Modal -->
+<div class="modal fade" id="add-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add A Product</h4>
+      </div>
+      <div class="modal-body">
+        
+        <div class="card">
+          <h4 class="card-title">Image URL: <input type="text" class="form-control text-center" value="Insert Image URL"/></h4>
+           <h4 class="card-title">Product Name: <input type="text" class="form-control text-center" value="Product Name"/></h4>
+           <h4 class="card-title">Unit Price: <input type="text" class="form-control text-center" value="$0.00"/> </h4>
+           <h4 class='card-title'>Description: <input type="text" class="form-control text-center" value="description goes here. like 1 pound per quantity or something similar to that effect"/> </h4>
+ 
+           <div class="col-md-8 col-md-offset-2">
+             <!-- <strong class="card-qty">QTY.</strong> -->
+               <div class="input-group">
+                 <div class="input-group-btn">
+                   <button class="btn btn-success">-</button>
+                 </div>
+ 
+                 <input type="text" class="form-control text-center" value="1"/>
+ 
+                 <div class="input-group-btn">
+                   <button class="btn btn-success">+</button>
+                 </div>
+               </div>
+           </div>  <!-- COL MD 6 -->
+ 
+           <div class="clearfix"></div>
+          </div> <!-- CARD -->
 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Add Product</button>
+      </div>
+    </div>
+  </div>
+</div> <!-- modal -->
 
 
 <!-- ========== Putting this here for now ========== -->
@@ -172,6 +213,10 @@ $(document).ready(function(){
   //   $('#dashboard-nav').toggleClass('burger-slide');
   //   $('#dashboard-nav').removeClass('col-xs-2');
   // });
+
+  $("#refresh").click(function(){
+    location.reload();
+  });
 
 }); // document ready
 

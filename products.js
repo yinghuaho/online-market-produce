@@ -14,6 +14,7 @@ $(document).ready(function(){
 				type:"post",
 				success:function(result){
 				  console.log(result);
+				  
 	
 				  if(result[0].message == "success")
 				  {

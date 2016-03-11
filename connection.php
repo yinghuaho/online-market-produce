@@ -1,6 +1,6 @@
 <?php
 try{
-	$db = new PDO("mysql:dbname=fnhOM;host=localhost", "fnhAdmin", "7453212");
+	$db = new PDO("mysql:dbname=fnhOM;host=localhost", "root", "");
 } catch (PDOExceptioin $e){
 	echo 'Connection Failed: ' . $e->getMessage();	
 }
